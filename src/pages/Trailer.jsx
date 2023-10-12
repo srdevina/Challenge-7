@@ -71,7 +71,7 @@ function Trailer() {
                         </Link>
                     </p>
                 </div>
-                <div className="md:mt-[94px]">
+                <div className="mt-10 md:mt-[94px]">
                     <Footer />
                 </div>
             </div>
