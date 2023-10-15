@@ -1,6 +1,8 @@
 import { BiLogInCircle } from 'react-icons/bi'
 
 const Login = () => {
+    
+
     return (
         <>
                 <div className="max-w-lg my-28 border border-red-600 rounded-xl mx-5 md:mx-auto lg:mx-auto p-5">
@@ -45,10 +47,7 @@ const Login = () => {
                                 type="password"
                                 id="password"
                                 className="py-3 px-2 border border-slate-300 rounded-xl w-full text-sm placeholder:text-slate-400
-                                    focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500\
-                                    invalid:text-pink-700
-                                    invalid:focus:ring-pink-700
-                                    invalid:focus:border-pink-700"
+                                    focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500\"
                             />
                         </label>
 

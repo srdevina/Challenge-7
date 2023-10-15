@@ -17,24 +17,26 @@ function DetailFilm() {
     useEffect(() => {
         const getDetailMovies = async () => {
             try {
-                const respons = await axios.get(
-                    `${import.meta.env.VITE_API_URL}/movie/${movieId}?language=en-US&page=1`,
+                //get token from local storage
+                const token = localStorage.getItem("token");
+                if (!token) return;
+
+                const response = await axios.get(
+                    `${import.meta.env.VITE_API_URL}/api/v1/movie/${movieId}`,
                     {
                         headers: {
-                            Authorization: `Bearer ${import.meta.env.VITE_API_AUTH_TOKEN}`,
+                            Authorization: `Bearer ${token}`,
                         },
                     }
                 );
 
-                console.log(respons.data)
+                const { data } = response.data;
 
-                if (respons.data) {
-                    setDetailMovies(respons.data);
-                }
+                setDetailMovies(data);
 
             } catch (error) {
                 if (axios.isAxiosError(error)) {
-                    alert(error?.response?.data?.status_message);
+                    alert(error?.response?.data?.message);
                     return;
                 }
                 alert(error?.message);
@@ -54,7 +56,7 @@ function DetailFilm() {
             <div className="bg-black w-full">
                 <img
                     className="lg:w-full opacity-50"
-                    src={import.meta.env.VITE_TRANDING_IMG + detailMovies.backdrop_path}
+                    src={import.meta.env.VITE_BACKDROP_PATH + detailMovies.backdrop_path}
                 />
             </div>
             <div className="bg-black pt-8 pb-8 lg:bg-transparent lg:absolute lg:bottom-32 px-8">

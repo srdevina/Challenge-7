@@ -17,7 +17,7 @@ function HasilPencarian() {
                 // Get the data from API with query and page variable
                 const response = await axios.get(
                     `${import.meta.env.VITE_API_URL
-                    }/search/movie?query=${query}&page${page}`,
+                    }/search/movie?page=${page}&query=${query}`,
                     {
                         headers: {
                             Authorization: `Bearer ${import.meta.env.VITE_API_AUTH_TOKEN}`,
@@ -26,7 +26,7 @@ function HasilPencarian() {
                 );
                 // Set state for the movie that have been searched
                 const { data } = response;
-                setSearchMovie(data?.results);
+                setSearchMovie(data);
             } catch (error) {
                 console.error(error);
             }

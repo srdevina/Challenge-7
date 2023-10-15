@@ -11,8 +11,12 @@ function Trailer() {
     useEffect(() => {
         const getTrailerMovies = async () => {
             try {
-                const respons = await axios.get(
-                    `${import.meta.env.VITE_API_URL}/movie/${movieId}/videos?language=en-US`,
+                //get token from local storage
+                const token = localStorage.getItem("token");
+                if (!token) return;
+
+                const response = await axios.get(
+                    `${import.meta.env.VITE_API_URL}/api/v1/movie/${movieId}`,
                     {
                         headers: {
                             Authorization: `Bearer ${import.meta.env.VITE_API_AUTH_TOKEN}`,
@@ -20,15 +24,13 @@ function Trailer() {
                     }
                 );
 
-                console.log(respons.data.results[0])
+                const { data } = response.data;
 
-                if (respons.data.results[0]) {
-                    setTrailerMovies(respons.data.results[0]);
-                }
+                setTrailerMovies(data);
 
             } catch (error) {
                 if (axios.isAxiosError(error)) {
-                    alert(error?.response?.data?.status_message);
+                    alert(error?.response?.data?.message);
                     return;
                 }
                 alert(error?.message);
@@ -42,7 +44,7 @@ function Trailer() {
         return <div>Loading...</div>
     }
 
-    const videoUrl = `https://www.youtube.com/watch?v=${trailerMovies.key}`
+    const videoUrl = `https://www.youtube.com/watch?v=${trailerMovies.videos[0].key}`
 
     return (
         <>
@@ -54,13 +56,17 @@ function Trailer() {
                     </button>
                 </Link>
                 <div className="flex flex-col items-center">
-                    <iframe
-                        src={`https://www.youtube.com/embed/${trailerMovies.key}`}
-                        frameBorder="0"
-                        className="w-96 h-56 lg:w-[1300px] lg:h-[550px]"
-                        allowFullScreen
-                    >
-                    </iframe>
+                    {/* mengambil satu video dari API Movie Details menggunakan method slice dengan mapping karena data video terlampau banyak */}
+                    {trailerMovies.videos.slice(0, 1).map((key) => (
+                        <iframe
+                            key={key}
+                            src={`https://www.youtube.com/embed/${trailerMovies.videos[0].key}`}
+                            frameBorder="0"
+                            className="w-96 h-56 lg:w-[1300px] lg:h-[550px]"
+                            allowFullScreen
+                        >
+                        </iframe>
+                    ))}
                     <p className="text-white font-bold text-2xl mt-7">
                         <Link
                             className="border-2 border-red-600 p-3 px-6 rounded-full hover:bg-red-800 hover:border-red-800"
