@@ -6,6 +6,7 @@ import HasilPencarian from './pages/HasilPencarian';
 import DetailFilm from './pages/DetailFilm';
 import NotFound from './pages/NotFound';
 import Trailer from './pages/Trailer';
+import Login from './pages/Login'
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path='/search' element={<HasilPencarian />} />
           <Route path='/detail-film/:movieId' element={<DetailFilm />} />
           <Route path='/trailer/:movieId' element={<Trailer />} />
+          <Route path='/login' element={<Login />} />
 
 
           <Route path='*' element={<NotFound />} />

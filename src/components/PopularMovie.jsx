@@ -8,38 +8,56 @@ function PopularMovie() {
     const [popularMovies, setPopularMovies] = useState([]);
     const [showAll, setShowAll] = useState(false);
 
+    const [errors, setErrors] = useState({
+        isError: false,
+        message: null,
+    });
+
     useEffect(() => {
         const getPopularMovies = async () => {
             try {
-                const respons = await axios.get(
-                    `${import.meta.env.VITE_API_URL}/movie/popular`,
+                //get token from local storage
+                const token = localStorage.getItem("token");
+                if (!token) return;
+
+                const response = await axios.get(
+                    `${import.meta.env.VITE_API_URL}/api/v1/movie/popular`,
                     {
                         headers: {
-                            Authorization: `Bearer ${import.meta.env.VITE_API_AUTH_TOKEN}`,
+                            Authorization: `Bearer ${token}`,
                         },
                     }
                 );
+                const { data } = response.data;
 
-                const { data } = respons;
-                const trending = []
-                for (let i = 0; i <= data.results.length; i++) {
-                    if (i <= 19) {
-                        trending.push(data.results[i])
-                    }
-                }
-                setPopularMovies(trending);
+                setPopularMovies(data);
+                setErrors({ ...errors, isError: false });
 
             } catch (error) {
                 if (axios.isAxiosError(error)) {
-                    alert(error?.response?.data?.status_message);
+                    setErrors({
+                        ...errors,
+                        isError: true,
+                        message: error?.response?.data.message,
+                    });
                     return;
                 }
+
                 alert(error?.message);
+                setErrors({
+                    ...errors,
+                    isError: true,
+                    message: error?.message,
+                });
             }
         };
 
         getPopularMovies();
-    }, []);
+    }, [])
+
+    if (errors.isError) {
+        return <h1>{errors.message}</h1>;
+    }
 
     if (popularMovies.length === 0) {
         return <h1>Loading...</h1>;
