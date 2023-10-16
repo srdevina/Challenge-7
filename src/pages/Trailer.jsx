@@ -19,7 +19,7 @@ function Trailer() {
                     `${import.meta.env.VITE_API_URL}/api/v1/movie/${movieId}`,
                     {
                         headers: {
-                            Authorization: `Bearer ${import.meta.env.VITE_API_AUTH_TOKEN}`,
+                            Authorization: `Bearer ${token}`,
                         },
                     }
                 );
