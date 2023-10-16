@@ -9,44 +9,72 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
 function HalamanHome1() {
-    const [trandingMovies, setTrandingMovies] = useState([]);
+    const [popularMovies, setPopularMovies] = useState([]);
     const linkRef = useRef(null)
 
-    //get API tranding movies
+    const [errors, setErrors] = useState({
+        isError: false,
+        message: null,
+    });
+    
+
+    //ambil API popular movies setealah berhasil mendapatkan token login
     useEffect(() => {
-        const getTrandingMovies = async () => {
+        const getPopularMovies = async () => {
             try {
-                const respons = await axios.get(
-                    `${import.meta.env.VITE_API_URL}/trending/movie/day?language=en-US&page=1`,
+                // Get token from local storage
+                const token = localStorage.getItem("token");
+                if (!token) return;
+
+                const response = await axios.get(
+                    `${import.meta.env.VITE_API_URL}/api/v1/movie/popular`,
                     {
                         headers: {
-                            Authorization: `Bearer ${import.meta.env.VITE_API_AUTH_TOKEN}`,
+                            Authorization: `Bearer ${token}`,
                         },
                     }
                 );
+                const { data } = response.data;
+                // console.log(data)
 
-                const { data } = respons;
-                const trending = []
-                for (let i = 0; i <= data.results.length; i++) {
+                //perulangan untuk menampilkan 3 data di main section
+                const popular = [];
+                for (let i = 0; i <= data.length; i++) {
                     if (i <= 2) {
-                        trending.push(data.results[i])
+                        popular.push(data[i])
                     }
                 }
-                setTrandingMovies(trending);
 
+                setPopularMovies(popular);
+                setErrors({ ...errors, isError: false });
             } catch (error) {
                 if (axios.isAxiosError(error)) {
-                    alert(error?.response?.data?.status_message);
+                    setErrors({
+                        ...errors,
+                        isError: true,
+                        message:
+                            error?.response?.data?.message || error?.message,
+                    });
                     return;
                 }
+
                 alert(error?.message);
+                setErrors({
+                    ...errors,
+                    isError: true,
+                    message: error?.message,
+                });
             }
         };
 
-        getTrandingMovies();
+        getPopularMovies();
     }, []);
 
-    if (trandingMovies.length === 0) {
+    if (errors.isError) {
+        return <h1>{errors.message}</h1>;
+    }
+
+    if (popularMovies.length === 0) {
         return <h1>Loading...</h1>;
     }
 
@@ -84,11 +112,11 @@ function HalamanHome1() {
             <Navbar />
             <div className="w-full bg-black">
                 <Slider {...settings}>
-                    {trandingMovies.map((movie) => (
+                    {popularMovies.map((movie) => (
                         <div key={movie.id} ref={linkRef}>
                             <MainSection
                                 trailer={movie.id}
-                                imageURL={import.meta.env.VITE_TRANDING_IMG + movie.backdrop_path}
+                                imageURL={import.meta.env.VITE_BACKDROP_PATH + movie.backdrop_path}
                                 title={movie.title}
                                 overview={movie.overview}
                             />
