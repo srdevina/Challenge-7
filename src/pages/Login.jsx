@@ -46,7 +46,7 @@ const Login = () => {
         <>
             <div className="max-w-lg my-28 border border-red-600 rounded-xl mx-5 md:mx-auto lg:mx-auto p-5">
                 <div className="text-3xl font-bold mb-4 flex flex-row items-center justify-center text-red-600">
-                    <BiLogInCircle />
+                    <BiLogInCircle className='text-5xl'/>
                     <h1>
                         Login
                     </h1>
