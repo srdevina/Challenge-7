@@ -64,15 +64,17 @@ const Login = () => {
                                 type="email"
                                 id="email"
                                 placeholder="masukkan email..."
-                                className="py-3 px-2 border border-slate-300 rounded-xl w-full text-sm placeholder:text-slate-400
-                                    focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500\
+                                className="py-3 px-2 border border-slate-300 rounded-xl w-full text-sm
+                                    placeholder:text-slate-400
+                                    focus:outline-none 
+                                    focus:ring-1 
+                                    focus:ring-sky-500 focus:border-sky-500\
                                     invalid:text-pink-700
                                     invalid:focus:ring-pink-700
                                     invalid:focus:border-pink-700
                                     peer"
                                 value={email}
                                 onChange={(event) => setEmail(event.target.value)}
-                                required
                             />
                             <p className="text-sm m-1 text-pink-700 invisible peer-invalid:visible">
                                 email tidak valid
