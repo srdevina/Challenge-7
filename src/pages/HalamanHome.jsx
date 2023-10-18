@@ -15,7 +15,7 @@ function HalamanHome1() {
         isError: false,
         message: null,
     });
-    
+
 
     //ambil API popular movies setealah berhasil mendapatkan token login
     useEffect(() => {
