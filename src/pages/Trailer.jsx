@@ -48,7 +48,7 @@ function Trailer() {
 
     return (
         <>
-            <div className="w-full bg-black pt-4 pb-12">
+            <div className="w-full bg-black pt-28 lg:pt-16 pb-12">
                 <Link as={Link} to={`/detail-film/${movieId}`}>
                     <button className="mb-4 lg:mt-4 border-t-2 border-r-2 hover:border-t-black hover:border-r-black hover:bg-red-600 hover:text-black border-red-600 bg-black w-32 h-10 p-2 rounded-r-full flex gap-3 items-center text-red-600 text-xl font-bold ">
                         <BiSolidChevronsLeft className="w-10 h-12" />

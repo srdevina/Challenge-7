@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSearchParams, Link } from "react-router-dom";
 import axios from "axios";
-import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 function HasilPencarian() {
@@ -43,7 +42,6 @@ function HasilPencarian() {
 
     return (
         <>
-            <Navbar />
             <div className="w-full bg-black">
                 <h1 className="text-white font-semibold text-3xl pt-28 ml-6 md:text-4xl md:ml-10 md:pt-28 mb-5">
                     {`Search = ${query}`}
