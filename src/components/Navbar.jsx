@@ -77,7 +77,7 @@ function Navbar() {
     <>
       <div className="w-full lg:mt-2 fixed z-50">
         <div className="lg:flex lg:justify-between lg:mx-2 lg:mt-2">
-          <div className="text-3xl text-red-600 font-extrabold flex justify-center">
+          <div className="text-3xl lg:ml-8 text-red-600 font-extrabold flex justify-center">
             <Link as={Link} to={"/"}>
               <h1>MovieList</h1>
             </Link>
