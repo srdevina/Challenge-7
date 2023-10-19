@@ -7,6 +7,7 @@ import DetailFilm from "./pages/DetailFilm";
 import NotFound from "./pages/NotFound";
 import Trailer from "./pages/Trailer";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 import Protected from "./components/Protected";
 import NoAccessToken from "./components/NoAccessToken";
 import HalamanUser from "./pages/HalamanUser";
@@ -63,6 +64,15 @@ function App() {
               element={
                 <NoAccessToken>
                   <Login />
+                </NoAccessToken>
+              }
+            />
+
+            <Route
+              path="/regis"
+              element={
+                <NoAccessToken>
+                  <Register />
                 </NoAccessToken>
               }
             />

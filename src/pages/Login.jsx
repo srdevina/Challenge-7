@@ -1,26 +1,12 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { BiLogInCircle } from "react-icons/bi";
 import axios from "axios";
 import GoogleLogin from "../components/GoogleLogin";
-// import { useNavigate } from "react-router-dom"
-import { FcGoogle } from "react-icons/fc"
-import { Link } from "react-router-dom";
-// import Loading from "../components/Loading";
 
 const Login = () => {
-    // const navigate = useNavigate();
-
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [isLoading, setIsLoading] = useState(false);
-
-    const handleClick = () => {
-        setIsLoading(true);
-
-        setTimeout(() => {
-            setIsLoading(false);
-        }, 2000);
-    };
 
     const login = async (event) => {
         // Prevent default is to prevent the default behavior
@@ -41,8 +27,6 @@ const Login = () => {
             localStorage.setItem("token", token);
 
             //redirect to home
-            // navigate("/")
-
             window.location.replace("/");
         } catch (error) {
             if (axios.isAxiosError(error)) {
@@ -55,12 +39,7 @@ const Login = () => {
 
     return (
         <>
-            <div className={`absolute top-28 p-10 w-full lg:top-14 lg:w-full lg:px-[350px]  
-                            ${isLoading ? 'opacity-50 pointer-events-none' : ''
-                }`}>
-                {isLoading && (
-                    <div className="absolute top-1/2 left-1/2 animate-spin rounded-full border-t-4 border-blue-500 border-r-4 h-8 w-8"></div>
-                )}
+            <div className="absolute top-28 p-10 w-full lg:top-14 lg:w-full lg:px-[350px]">
                 <div className="border border-red-600 rounded-xl p-5">
                     <div className="text-3xl font-bold mb-4 flex flex-row items-center justify-center text-red-600">
                         <BiLogInCircle className="text-5xl" />
@@ -118,32 +97,25 @@ const Login = () => {
                         </label>
                         <div className="flex flex-col items-center mt-6">
                             <button
-                                onClick={handleClick}
-                                className={`lg:w-40 text-white bg-red-600 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center-800`}
+                                type="submit"
+                                className="lg:w-40 text-white bg-red-600 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center-800"
                             >
-                                {isLoading ? 'loading...' : 'Submit'}
+                                Submit
                             </button>
-                            <p className="my-2 font-normal text-lg">
-                                or
+                            <p className="mt-2 text-gray-500 text-sm">
+                                Dont have an account? &nbsp;
+                                <Link to={"/regis"} className="underline text-red-500">
+                                    Register
+                                </Link>
                             </p>
+                            <p className="my-2 font-normal text-lg">Or</p>
                         </div>
-                    </form>
+                    </form >
                     <div className="mt-2 flex justify-center">
-                        <FcGoogle className="w-10 h-10" />
                         <GoogleLogin buttonText={"Login With Google"} />
                     </div>
-                    <div className="flex justify-center mt-4">
-                        <p>Belum punya akun?
-                            <Link
-                                as={Link}
-                                to={"/regis"}
-                                className="text-blue-700 hover:text-green-600">
-                                <i> Buat Akun</i>
-                            </Link>
-                        </p>
-                    </div>
-                </div>
-            </div>
+                </div >
+            </div >
         </>
     );
 };
