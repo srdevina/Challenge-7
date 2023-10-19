@@ -47,7 +47,7 @@ const HalamanUser = () => {
     return (
         <>
             <div className="w-full h-screen flex flex-col justify-center items-center bg-slate-800">
-                <div className="border-2 border-red-600 rounded-xl bg-slate-900 shadow-2xl shadow-slate-600  
+                <div className="p-2 lg:p-4 border-2 border-red-600 rounded-xl bg-slate-900 shadow-2xl shadow-slate-600  
                                 transition-transform duration-500 transform-gpu hover:scale-125">
                     <div className="font-bold text-2xl flex flex-col items-center mt-6">
                         <BiSolidUserDetail className="text-red-600 w-20 h-20" />

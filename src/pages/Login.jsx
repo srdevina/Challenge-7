@@ -7,6 +7,7 @@ import GoogleLogin from "../components/GoogleLogin";
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
 
     const login = async (event) => {
         // Prevent default is to prevent the default behavior
@@ -37,9 +38,26 @@ const Login = () => {
         }
     };
 
+    //animasi loading setelah button submit diklik
+    const handleClick = () => {
+        setIsLoading(true);
+
+        setTimeout(() => (
+            setIsLoading(false)
+        ), 2000)
+    }
+
     return (
         <>
-            <div className="absolute top-28 p-10 w-full lg:top-14 lg:w-full lg:px-[350px]">
+            <div className={`absolute top-28 p-10 w-full lg:top-14 lg:w-full lg:px-[350px] 
+                            ${isLoading ? 'opacity-50 pointer-events-none' : ''}`}
+                            >
+                                {isLoading && (
+                                    <div className="animate-spin w-8 h-8 border-t-4 border-r-4 border-blue-500 rounded-full
+                                                    absolute top-64 left-56
+                                                    lg:absolute lg:top-[260px] lg:left-[730px]">
+                                    </div>
+                                )}
                 <div className="border border-red-600 rounded-xl p-5">
                     <div className="text-3xl font-bold mb-4 flex flex-row items-center justify-center text-red-600">
                         <BiLogInCircle className="text-5xl" />
@@ -97,10 +115,11 @@ const Login = () => {
                         </label>
                         <div className="flex flex-col items-center mt-6">
                             <button
+                                onClick={handleClick}
                                 type="submit"
                                 className="lg:w-40 text-white bg-red-600 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center-800"
                             >
-                                Submit
+                                {isLoading ? 'Loading...' : 'Submit'}
                             </button>
                             <p className="mt-2 text-gray-500 text-sm">
                                 Dont have an account? &nbsp;
