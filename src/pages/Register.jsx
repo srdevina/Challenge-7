@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import GoogleLogin from "../components/GoogleLogin";
-import { BiSolidUserDetail } from "react-icons/bi"
+import { BiSolidUserDetail } from "react-icons/bi";
 
 const Register = () => {
   const [firstname, setFirstName] = useState("");
@@ -56,16 +56,17 @@ const Register = () => {
           password,
         }
       );
-      const { data } = response.data;
-      const { token } = data;
 
-      //save our token
-      localStorage.setItem("token", token);
+      // Check for successful registration
+      if (response.status === 201) {
+        alert("Registration successful!");
+        window.location.replace("/login");
+      } else {
+        alert("Registration failed. Please try again.");
+      }
 
-      //redirect to home
-      // navigate("/")
-
-      window.location.replace("/");
+      // Alihkan pengguna ke halaman login
+      window.location.replace("/login");
     } catch (error) {
       if (axios.isAxiosError(error)) {
         alert(error?.response?.data?.message);
