@@ -64,9 +64,6 @@ const Register = () => {
       } else {
         alert("Registration failed. Please try again.");
       }
-
-      // Alihkan pengguna ke halaman login
-      window.location.replace("/login");
     } catch (error) {
       if (axios.isAxiosError(error)) {
         alert(error?.response?.data?.message);
