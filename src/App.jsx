@@ -13,13 +13,16 @@ import NoAccessToken from "./components/NoAccessToken";
 import HalamanUser from "./pages/HalamanUser";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import Navbar from "./components/Navbar";
+import { Provider } from "react-redux";
+import store from "./redux/store";
 
 function App() {
   return (
     <>
+      <Provider store={store}>
       <GoogleOAuthProvider
         clientId={import.meta.env.VITE_GOOGLE_OAUTH_CLIENT_ID}
-      >
+        >
         <BrowserRouter>
           <Navbar />
           <Routes>
@@ -90,6 +93,7 @@ function App() {
           </Routes>
         </BrowserRouter>
       </GoogleOAuthProvider>
+      </Provider>
     </>
   );
 }

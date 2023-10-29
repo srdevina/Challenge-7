@@ -2,14 +2,18 @@ import { SlMagnifier } from "react-icons/sl";
 import { useNavigate, Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { NavLink } from "react-router-dom";
 
+import { useDispatch, useSelector } from "react-redux";
+import { getMe, logout } from "../redux/actions/authActions";
+
 function Navbar() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const { user, token } = useSelector((state) => state.auth);
+
   const [isOpen, setIsOpen] = useState(false);
-  const [user, setUser] = useState(null);
 
   //insert query movies and get by id in TMDB
   const handleSearch = (e) => {
@@ -27,51 +31,18 @@ function Navbar() {
     setIsOpen(!isOpen);
   };
 
-  //logout
-  const logout = (event) => {
-    event.preventDefault();
-
-    localStorage.removeItem("token");
-
-    window.location.replace("/");
+  //logout with redux
+  const onLogout = () => {
+    dispatch(logout());
+    navigate("/login");
   };
 
-  //get me
+  //get me with redux
   useEffect(() => {
-    const getMe = async () => {
-      try {
-        const token = localStorage.getItem("token");
-        if (!token) return;
-
-        const response = await axios.get(
-          `${import.meta.env.VITE_API_URL}/api/v1/auth/me`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-        const { data } = response.data;
-
-        setUser(data);
-      } catch (error) {
-        if (axios.isAxiosError(error)) {
-          //if token is not valid
-          if (error.response.status === 401) {
-            localStorage.removeItem("token");
-            return;
-          }
-
-          alert(error?.response?.data?.message);
-          return;
-        }
-
-        alert(error?.message);
-      }
-    };
-
-    getMe();
-  }, []);
+    if (token) {
+      dispatch(getMe(navigate, null, "/login"));
+    }
+  }, [dispatch, navigate, token]);
 
   return (
     <>
@@ -124,7 +95,7 @@ function Navbar() {
                     </NavLink>
                   </div>
                   <button
-                    onClick={logout}
+                    onClick={onLogout}
                     className="border-2 border-red-600 bg-red-600 p-2 rounded-xl text-white hover:bg-red-800 hover:border-black mr-4"
                   >
                     Logout
@@ -145,7 +116,7 @@ function Navbar() {
                         </NavLink>
                       </div>
                       <button
-                        onClick={logout}
+                        onClick={onLogout}
                         className="border-2 border-red-600 bg-red-600 p-2 rounded-xl text-white hover:bg-red-800 hover:border-black mr-4"
                       >
                         Logout

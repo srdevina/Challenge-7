@@ -39,7 +39,7 @@ const Login = () => {
     };
 
     //animasi loading setelah button submit diklik
-    const handleClick = () => {
+    const handleClick = () => { 
         setIsLoading(true);
 
         setTimeout(() => setIsLoading(false), 2000);
