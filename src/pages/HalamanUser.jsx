@@ -1,48 +1,21 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useEffect } from "react";
+// import axios from "axios";
 import { BiSolidUserDetail } from "react-icons/bi";
 import { FaUserAstronaut } from "react-icons/fa"
 import { MdMarkEmailRead } from "react-icons/md"
 import { ImUserCheck } from "react-icons/im"
+import { useDispatch, useSelector } from "react-redux";
+import { getMe } from "../redux/actions/authActions";
 
 const HalamanUser = () => {
-    const [user, setUser] = useState(null);
+    const dispatch = useDispatch();
+    const { user } = useSelector((state) => state.auth);
+
+    // const [user, setUser] = useState(null);
 
     useEffect(() => {
-        const getMe = async () => {
-            try {
-                const token = localStorage.getItem("token");
-                if (!token) return;
-
-                const response = await axios.get(
-                    `${import.meta.env.VITE_API_URL}/api/v1/auth/me`,
-                    {
-                        headers: {
-                            Authorization: `Bearer ${token}`,
-                        },
-                    }
-                );
-                const { data } = response.data;
-
-                setUser(data);
-            } catch (error) {
-                if (axios.isAxiosError(error)) {
-                    //if token is not valid
-                    if (error.response.status === 401) {
-                        localStorage.removeItem("token");
-                        return;
-                    }
-
-                    alert(error?.response?.data?.message);
-                    return;
-                }
-
-                alert(error?.message);
-            }
-        };
-
-        getMe();
-    }, []);
+        dispatch(getMe(null))
+    }, [dispatch]);
 
     return (
         <>
