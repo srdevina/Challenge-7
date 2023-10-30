@@ -1,45 +1,28 @@
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux"
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { BiLogInCircle } from "react-icons/bi";
-import axios from "axios";
 import GoogleLogin from "../components/GoogleLogin";
+import { login } from "../redux/actions/authActions";
+
 
 const Login = () => {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [isLoading, setIsLoading] = useState(false);
 
-    const login = async (event) => {
-        // Prevent default is to prevent the default behavior
+    const onLogin = async (event) => {
         event.preventDefault();
 
-        try {
-            const response = await axios.post(
-                `${import.meta.env.VITE_API_URL}/api/v1/auth/login`,
-                {
-                    email,
-                    password,
-                }
-            );
-            const { data } = response.data;
-            const { token } = data;
-
-            //save our token
-            localStorage.setItem("token", token);
-
-            //redirect to home
-            window.location.replace("/");
-        } catch (error) {
-            if (axios.isAxiosError(error)) {
-                alert(error?.response?.data?.message);
-                return;
-            }
-            alert(error?.message);
-        }
-    };
+        // Call the login action from redux action
+        dispatch(login(email, password, navigate))
+    }
 
     //animasi loading setelah button submit diklik
-    const handleClick = () => { 
+    const handleClick = () => {
         setIsLoading(true);
 
         setTimeout(() => setIsLoading(false), 2000);
@@ -64,7 +47,7 @@ const Login = () => {
                         <BiLogInCircle className="text-5xl" />
                         <h1>Login</h1>
                     </div>
-                    <form action="submit" onSubmit={login}>
+                    <form action="submit" onSubmit={onLogin}>
                         <label htmlFor="email">
                             <span
                                 className="block font-semibold mb-2 text-slate-700
