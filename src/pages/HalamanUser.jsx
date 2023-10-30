@@ -12,7 +12,6 @@ const HalamanUser = () => {
     const { user } = useSelector((state) => state.auth);
 
     // const [user, setUser] = useState(null);
-
     useEffect(() => {
         dispatch(getMe(null))
     }, [dispatch]);

@@ -1,0 +1,60 @@
+.box{
+    position: relative;
+    width: 480px;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.box::after
+{
+    content: '';
+    position: absolute;
+    width: 1000px;
+    height: 1000px;
+    top: -36%;
+    left: -55%;
+    background-image: conic-gradient(transparent, transparent, transparent, #FF0000);
+    animation: animate 4s linear infinite;
+    animation-delay: 2s;
+}
+
+.box::before
+{
+    content: '';
+    position: absolute;
+    width: 1000px;
+    height: 1000px;
+    top: -36%;
+    left: -55%;
+    background-image: conic-gradient(transparent, transparent, transparent, #00ccff);
+    animation: animate 4s linear infinite;
+}
+
+
+@keyframes animate 
+{
+    0%
+    {
+        transform: rotate(0deg);
+    }
+    100%
+    {
+        transform: rotate(360deg);
+    }
+}
+
+
+.box2
+{
+    position: absolute;
+    inset: 5px;
+    border-radius: 16px;
+    background: #0c1022;
+    z-index: 1;
+}
+
+.box3 
+{
+    position: relative;
+    z-index: 2
+}
