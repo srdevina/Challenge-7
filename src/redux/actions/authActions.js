@@ -40,9 +40,36 @@ export const getMe = (navigate, navigatePathSuccess, navigatePathError) =>
         }
     };
 
+export const login = (email, password, navigate) => async (dispatch) => {
+    try {
+        const response = await axios.post(
+            `${import.meta.env.VITE_API_URL}/api/v1/auth/login`,
+            {
+                email,
+                password,
+            }
+        );
+        const { data } = response.data;
+        const { token } = data;
 
+        //save our token
+        dispatch(setToken(token));
+
+        //redirect to home
+        navigate("/");
+    } catch (error) {
+        if (axios.isAxiosError(error)) {
+            alert(error?.response?.data?.message);
+            return;
+        }
+        alert(error?.message);
+    }
+};
     
 export const logout = () => (dispatch) => {
     dispatch(setToken(null));
     dispatch(setUser(null));
-}
+};
+
+
+
