@@ -48,38 +48,40 @@ function Navbar() {
     <>
       <div className="w-full lg:mt-2 fixed z-50">
         <div className="lg:flex lg:justify-between lg:mx-2 lg:mt-2">
-          <div className="text-3xl lg:ml-8 text-red-600 font-extrabold flex justify-center">
-            <Link as={Link} to={"/"}>
-              <h1>MovieList</h1>
-            </Link>
-          </div>
           {/* jika user ada atau sdh login ini baru ditampilkan */}
           {user && (
-            <div className="md:flex md:justify-between md:mr-5 flex flex-col">
-              <div className="flex justify-between mx-2 mr-9 mt-1 lg:mt-0">
-                <form action="search" className="flex" onSubmit={handleSearch}>
-                  <input
-                    name="search"
-                    type="text"
-                    className=" border-y-2 border-s-2 border-red-600 rounded-s-3xl bg-transparent px-3 lg:w-[550px] placeholder:text-gray-300 text-white"
-                    placeholder="Mau nonton apa hari ini?"
-                  />
-                  <button type="submit">
-                    <SlMagnifier className="w-11 h-11 p-[7px] border-e-2 border-y-2 rounded-e-3xl text-gray-300 border-red-600 hover:bg-red-600 hover:text-white" />
-                  </button>
-                </form>
-                <button
-                  className="lg:hidden text-red-600 "
-                  onClick={toggleNavbar}
-                >
-                  {isOpen ? (
-                    <X className="w-10 h-8" />
-                  ) : (
-                    <Menu className="w-10 h-8" />
-                  )}
-                </button>
+            <>
+              <div className="text-3xl lg:ml-8 text-red-600 font-extrabold flex justify-center">
+                <Link as={Link} to={"/"}>
+                  <h1>MovieList</h1>
+                </Link>
               </div>
-            </div>
+              <div className="md:flex md:justify-between md:mr-5 flex flex-col">
+                <div className="flex justify-between mx-2 mr-9 mt-1 lg:mt-0">
+                  <form action="search" className="flex" onSubmit={handleSearch}>
+                    <input
+                      name="search"
+                      type="text"
+                      className=" border-y-2 border-s-2 border-red-600 rounded-s-3xl bg-transparent px-3 lg:w-[550px] placeholder:text-gray-300 text-white"
+                      placeholder="Mau nonton apa hari ini?"
+                    />
+                    <button type="submit">
+                      <SlMagnifier className="w-11 h-11 p-[7px] border-e-2 border-y-2 rounded-e-3xl text-gray-300 border-red-600 hover:bg-red-600 hover:text-white" />
+                    </button>
+                  </form>
+                  <button
+                    className="lg:hidden text-red-600 "
+                    onClick={toggleNavbar}
+                  >
+                    {isOpen ? (
+                      <X className="w-10 h-8" />
+                    ) : (
+                      <Menu className="w-10 h-8" />
+                    )}
+                  </button>
+                </div>
+              </div>
+            </>
           )}
           <div>
             {user ? (
@@ -126,21 +128,21 @@ function Navbar() {
                 )}
               </>
             ) : (
-              <div className="flex justify-center gap-4 m-3">
-                <NavLink
+              <div className="flex justify-between mx-6 gap-2 lg:mx-8 lg:gap-4 lg:mt-2">
+                {/* <NavLink
                   as={Link}
                   to="/login"
                   className="border-2 text-red-600 border-red-600 rounded-3xl p-2 px-4 mr-2 hover:bg-red-600 hover:text-white"
                 >
                   login
-                </NavLink>
-                <NavLink
+                </NavLink> */}
+                {/* <NavLink
                   as={Link}
                   to="/regis"
                   className="border-2 text-white border-red-600 bg-red-600 rounded-3xl p-2 px-4 hover:bg-red-700 hover:text-white"
                 >
                   Register
-                </NavLink>
+                </NavLink> */}
               </div>
             )}
           </div>
