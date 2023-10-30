@@ -1,10 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux"
+import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { BiLogInCircle } from "react-icons/bi";
 import GoogleLogin from "../components/GoogleLogin";
 import { login } from "../redux/actions/authActions";
-
 
 const Login = () => {
     const navigate = useNavigate();
@@ -12,20 +11,19 @@ const Login = () => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    
+
     const [isLoading, setIsLoading] = useState(false);
 
     const onLogin = async (event) => {
         event.preventDefault();
 
         // Call the login action from redux action
-        dispatch(login(email, password, navigate))
-    }
+        dispatch(login(email, password, navigate));
+    };
 
     //animasi loading setelah button submit diklik
     const handleClick = () => {
         setIsLoading(true);
-
         setTimeout(() => setIsLoading(false), 2000);
     };
 
