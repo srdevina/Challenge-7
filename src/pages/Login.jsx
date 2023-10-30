@@ -63,12 +63,12 @@ const Login = () => {
               </div>
               <div className="absolute top-2 -right-36 left-56 lg:relative overflow-clip lg:right-0 lg:left-0 lg:top-0">
                 <Slider {...settings} className="lg:mt-6">
-                  <img src="../../public/captain-america_449504.png" alt="icon capten america" className="p-3 lg:p-4" />
-                  <img src="../../public/spiderman_1090806.png" alt="icon spiderman" className="p-3 lg:p-4" />
-                  <img src="../../public/superhero_136398.png" alt="icon superhero1" className="p-3 lg:p-4" />
-                  <img src="../../public/superhero_663083.png" alt="icon hulk" className="p-3 lg:p-4" />
-                  <img src="../../public/superhero_663084.png" alt="icon iron man" className="p-3 lg:p-4" />
-                  <img src="../../public/superheroe_1377077.png" alt="icon xman" className="p-3 lg:p-4" />
+                  <img src="../../src/assets/captain-america_449504.png" alt="icon capten america" className="p-3 lg:p-4" />
+                  <img src="../../src/assets/spiderman_1090806.png" alt="icon spiderman" className="p-3 lg:p-4" />
+                  <img src="../../src/assets/superhero_136398.png" alt="icon superhero1" className="p-3 lg:p-4" />
+                  <img src="../../src/assets/superhero_663083.png" alt="icon hulk" className="p-3 lg:p-4" />
+                  <img src="../../src/assets/superhero_663084.png" alt="icon iron man" className="p-3 lg:p-4" />
+                  <img src="../../src/assets/superheroe_1377077.png" alt="icon xman" className="p-3 lg:p-4" />
                 </Slider>
               </div>
             </div>
