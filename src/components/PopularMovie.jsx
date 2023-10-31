@@ -3,12 +3,12 @@ import { useEffect, useState } from "react";
 import { FiChevronsRight } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getPopularMovies } from "../redux/actions/movieActions";
+import { getPopularSlice } from "../redux/actions/movieActions";
 
 function PopularMovie() {
   const dispatch = useDispatch();
 
-  const { popular } = useSelector((state) => state.movie);
+  const { popularSlice } = useSelector((state) => state.movie);
 
   const [errors, setErrors] = useState({
     isError: false,
@@ -16,8 +16,8 @@ function PopularMovie() {
   });
 
   useEffect(() => {
-    dispatch(getPopularMovies(setErrors, errors));
-  }, [dispatch, errors]);
+    dispatch(getPopularSlice(setErrors, errors));
+  }, []);
 
   const [showAll, setShowAll] = useState(false);
 
@@ -25,7 +25,7 @@ function PopularMovie() {
     return <h1>{errors.message}</h1>;
   }
 
-  if (popular.length === 0) {
+  if (popularSlice.length === 0) {
     return <h1>Loading...</h1>;
   }
 
@@ -54,7 +54,7 @@ function PopularMovie() {
         </div>
         <div className="grid lg:grid-cols-4 md:grid-cols-2">
           {showAll
-            ? popular.map((movie) => (
+            ? popularSlice.map((movie) => (
                 <div key={movie.id}>
                   <div className="border-2 border-red-800 hover:border-white p-2 m-4 flex justify-center cursor-pointer">
                     <Link to={`/detail-film/${movie.id}`}>
@@ -69,7 +69,7 @@ function PopularMovie() {
                   </div>
                 </div>
               ))
-            : popular.slice(0, 4).map((movie) => (
+            : popularSlice.slice(0, 4).map((movie) => (
                 <div key={movie.id}>
                   <div className="border-2 border-red-800 hover:border-white p-2 m-4 flex justify-center cursor-pointer">
                     <Link to={`/detail-film/${movie.id}`}>

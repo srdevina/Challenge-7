@@ -9,7 +9,7 @@ import Slider from "react-slick";
 import { getPopularMovies } from "../redux/actions/movieActions";
 import { useSelector, useDispatch } from "react-redux";
 
-function HalamanHome1() {
+function HalamanHome() {
   const dispatch = useDispatch();
 
   const { popular } = useSelector((state) => state.movie);
@@ -22,7 +22,7 @@ function HalamanHome1() {
 
   useEffect(() => {
     dispatch(getPopularMovies(setErrors, errors));
-  }, [dispatch, errors]);
+  }, []);
 
   if (errors.isError) {
     return <h1>{errors.message}</h1>;
@@ -78,12 +78,12 @@ function HalamanHome1() {
         </Slider>
       </div>
       <PopularMovie />
-      <Footer 
-        linkRef={linkRef} 
-        goto={goto} 
+      <Footer
+        linkRef={linkRef}
+        goto={goto}
       />
     </div >
   );
 }
 
-export default HalamanHome1;
+export default HalamanHome;
