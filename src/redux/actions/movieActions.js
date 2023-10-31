@@ -17,6 +17,7 @@ export const getPopularMovies =
       );
       const { data } = response.data;
 
+
       // Set the popular movie to global state
       dispatch(setPopular(data));
       setErrors({ ...errors, isError: false });

@@ -7,7 +7,11 @@ export const getMe =
     try {
       let { token } = getState().auth;
 
-      if (!token) return;
+      // if (!token) {
+      //   navigate("/login")
+      // } else {
+      //   return;
+      // }
 
       const response = await axios.get(
         `${import.meta.env.VITE_API_URL}/api/v1/auth/me`,
