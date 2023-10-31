@@ -6,6 +6,13 @@ import GoogleLogin from "../components/GoogleLogin";
 import { login } from "../redux/actions/authActions";
 import Slider from "react-slick";
 
+import captenAmerica from "../assets/captain-america_449504.png";
+import spiderMan from "../assets/spiderman_1090806.png";
+import xman from "../assets/xman.png";
+import hulk from "../assets/hulk.png";
+import flash from "../assets/flash.png";
+import ironMan from "../assets/ironMan.png"
+
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -45,9 +52,8 @@ const Login = () => {
       <div className="bg-slate-950 w-full h-screen">
         <div
           className={`absolute px-4 lg:pt-20 w-full lg:w-full lg:px-[760px]
-                            ${
-                              isLoading ? "opacity-50 pointer-events-none" : ""
-                            }`}
+                            ${isLoading ? "opacity-50 pointer-events-none" : ""
+            }`}
         >
           {isLoading && (
             <div
@@ -69,32 +75,32 @@ const Login = () => {
               <div className="absolute top-2 -right-36 left-56 lg:relative overflow-clip lg:right-0 lg:left-0 lg:top-0">
                 <Slider {...settings} className="lg:mt-6">
                   <img
-                    src="../../src/assets/captain-america_449504.png"
+                    src={captenAmerica}
                     alt="icon capten america"
                     className="p-3 lg:p-4"
                   />
                   <img
-                    src="../../src/assets/spiderman_1090806.png"
+                    src={spiderMan}
                     alt="icon spiderman"
                     className="p-3 lg:p-4"
                   />
                   <img
-                    src="../../src/assets/superhero_136398.png"
+                    src={ironMan}
                     alt="icon superhero1"
                     className="p-3 lg:p-4"
                   />
                   <img
-                    src="../../src/assets/superhero_663083.png"
+                    src={hulk}
                     alt="icon hulk"
                     className="p-3 lg:p-4"
                   />
                   <img
-                    src="../../src/assets/superhero_663084.png"
+                    src={flash}
                     alt="icon iron man"
                     className="p-3 lg:p-4"
                   />
                   <img
-                    src="../../src/assets/superheroe_1377077.png"
+                    src={xman}
                     alt="icon xman"
                     className="p-3 lg:p-4"
                   />
