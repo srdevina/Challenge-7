@@ -38,7 +38,7 @@ function Trailer() {
                 </Link>
                 <div className="flex flex-col items-center">
                     {/* mengambil satu video dari API Movie Details menggunakan method slice dengan mapping karena data video terlampau banyak */}
-                    {detail.videos.map((video, key) => (
+                    {detail.videos.slice(0, 1).map((key) => (
                         <iframe
                             key={key}
                             src={`https://www.youtube.com/embed/${detail.videos[0].key}`}

@@ -14,7 +14,7 @@ const movieSlice = createSlice({
     },
     setDetail: (state, action) => {
       state.detail = action.payload;
-    },
+    }
   },
 });
 
@@ -22,7 +22,7 @@ export const {
   setPopular,
   setDetail,
   fetchMoviesSuccess,
-  fetchMoviesError
+  fetchMoviesError,
 } =
   movieSlice.actions;
 
