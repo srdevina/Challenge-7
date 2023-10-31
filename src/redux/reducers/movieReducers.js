@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   popular: [],
+  popularSlice: [],
   detail: [],
 };
 
@@ -12,6 +13,9 @@ const movieSlice = createSlice({
     setPopular: (state, action) => {
       state.popular = action.payload;
     },
+    setPopularSlice: (state, action) => {
+      state.popularSlice = action.payload;
+    },
     setDetail: (state, action) => {
       state.detail = action.payload;
     }
@@ -20,6 +24,7 @@ const movieSlice = createSlice({
 
 export const {
   setPopular,
+  setPopularSlice,
   setDetail,
   fetchMoviesSuccess,
   fetchMoviesError,
