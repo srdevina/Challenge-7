@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import MainSection from "../components/MainSection";
-// import PopularMovie from "../components/PopularMovie"
+import PopularMovie from "../components/PopularMovie"
 import Footer from "../components/Footer"
 import axios from "axios";
 import "slick-carousel/slick/slick.css"
@@ -122,7 +122,7 @@ function HalamanHome1() {
                     ))}
                 </Slider>
             </div>
-            {/* <PopularMovie /> */}
+            <PopularMovie />
             <Footer linkRef={linkRef} goto={goto} />
         </div >
     )
