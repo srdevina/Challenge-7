@@ -33,5 +33,5 @@ MainSection.propTypes = {
     imageURL: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     overview: PropTypes.string.isRequired,
-    trailer: PropTypes.number.isRequired
+    trailer: PropTypes.number
 }
