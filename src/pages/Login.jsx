@@ -37,7 +37,7 @@ const Login = () => {
     autoplay: true,
     speed: 2000,
     autoplaySpeed: 2000,
-    cssEase: "linear"
+    cssEase: "linear",
   };
 
   return (
@@ -45,8 +45,9 @@ const Login = () => {
       <div className="bg-slate-950 w-full h-screen">
         <div
           className={`absolute px-4 lg:pt-20 w-full lg:w-full lg:px-[760px]
-                            ${isLoading ? "opacity-50 pointer-events-none" : ""
-            }`}
+                            ${
+                              isLoading ? "opacity-50 pointer-events-none" : ""
+                            }`}
         >
           {isLoading && (
             <div
@@ -58,17 +59,45 @@ const Login = () => {
           <div className="w-80 h-screen lg:w-[700px] lg:h-screen rounded-e-[60px] bg-gradient-to-r from-cyan-800 bg-opacity-50 absolute left-0 top-0">
             <div className="lg:mt-48 lg:w-96 lg:p-12 lg:rounded-2xl lg:ml-40 lg:bg-slate-900 lg:bg-opacity-50 lg:flex lg:flex-col lg:shadow-2xl">
               <div className="mt-4 mx-4 lg:mt-0 lg:mx-0">
-                <h1 className="text-white text-base font-medium lg:font-medium lg:text-lg lg:mb-2">Welcome to 🎞️🍿</h1>
-                <p className="text-red-600 text-4xl font-extrabold lg:text-6xl lg:font-extrabold">MovieList</p>
+                <h1 className="text-white text-base font-medium lg:font-medium lg:text-lg lg:mb-2">
+                  Welcome to 🎞️🍿
+                </h1>
+                <p className="text-red-600 text-4xl font-extrabold lg:text-6xl lg:font-extrabold">
+                  MovieList
+                </p>
               </div>
               <div className="absolute top-2 -right-36 left-56 lg:relative overflow-clip lg:right-0 lg:left-0 lg:top-0">
                 <Slider {...settings} className="lg:mt-6">
-                  <img src="../../src/assets/captain-america_449504.png" alt="icon capten america" className="p-3 lg:p-4" />
-                  <img src="../../src/assets/spiderman_1090806.png" alt="icon spiderman" className="p-3 lg:p-4" />
-                  <img src="../../src/assets/superhero_136398.png" alt="icon superhero1" className="p-3 lg:p-4" />
-                  <img src="../../src/assets/superhero_663083.png" alt="icon hulk" className="p-3 lg:p-4" />
-                  <img src="../../src/assets/superhero_663084.png" alt="icon iron man" className="p-3 lg:p-4" />
-                  <img src="../../src/assets/superheroe_1377077.png" alt="icon xman" className="p-3 lg:p-4" />
+                  <img
+                    src="../../src/assets/captain-america_449504.png"
+                    alt="icon capten america"
+                    className="p-3 lg:p-4"
+                  />
+                  <img
+                    src="../../src/assets/spiderman_1090806.png"
+                    alt="icon spiderman"
+                    className="p-3 lg:p-4"
+                  />
+                  <img
+                    src="../../src/assets/superhero_136398.png"
+                    alt="icon superhero1"
+                    className="p-3 lg:p-4"
+                  />
+                  <img
+                    src="../../src/assets/superhero_663083.png"
+                    alt="icon hulk"
+                    className="p-3 lg:p-4"
+                  />
+                  <img
+                    src="../../src/assets/superhero_663084.png"
+                    alt="icon iron man"
+                    className="p-3 lg:p-4"
+                  />
+                  <img
+                    src="../../src/assets/superheroe_1377077.png"
+                    alt="icon xman"
+                    className="p-3 lg:p-4"
+                  />
                 </Slider>
               </div>
             </div>

@@ -8,10 +8,10 @@ function Footer({ linkRef, goto }) {
             <div className="w-full pb-8 px-4 bg-black border-t-2 border-t-red-600 lg:mt-0 lg:pt-10 lg:px-8 lg:pb-8">
                 <div className="flex flex-col gap-2 lg:flex lg:flex-row lg:justify-evenly md:flex md:flex-row md:justify-evenly md:pt-6">
                     <div className="justify-center md:border-r-2 md:border-r-red-600 flex items-center p-10" >
-                        <header 
-                            className="text-white font-extrabold text-2xl lg:text-5xl cursor-pointer" 
+                        <header
+                            className="text-white font-extrabold text-2xl lg:text-5xl cursor-pointer"
                             onClick={() => goto(linkRef.current)}>
-                                MovieList
+                            MovieList
                         </header>
                     </div>
                     <div className="text-lg">

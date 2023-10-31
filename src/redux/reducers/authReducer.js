@@ -25,7 +25,7 @@ const authSlice = createSlice({
     },
 });
 
-export const { setToken, setUser } = authSlice.actions;
+export const { setToken, setIsLoggedin, setUser } = authSlice.actions;
 
 // Export the global state, so the variable in the initialState will be available in any component
 export default authSlice.reducer;
