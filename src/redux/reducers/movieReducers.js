@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   popular: [],
+  detail: [],
 };
 
 const movieSlice = createSlice({
@@ -11,10 +12,18 @@ const movieSlice = createSlice({
     setPopular: (state, action) => {
       state.popular = action.payload;
     },
+    setDetail: (state, action) => {
+      state.detail = action.payload;
+    },
   },
 });
 
-export const { setPopular, fetchMoviesSuccess, fetchMoviesError } =
+export const {
+  setPopular,
+  setDetail,
+  fetchMoviesSuccess,
+  fetchMoviesError
+} =
   movieSlice.actions;
 
 export default movieSlice.reducer;

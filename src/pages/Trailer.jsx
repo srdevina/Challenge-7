@@ -1,50 +1,31 @@
-import axios from "axios";
 import Footer from "../components/Footer"
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { BiSolidChevronsLeft } from "react-icons/bi"
+import { BiSolidChevronsLeft } from "react-icons/bi";
+import { getDetailMovie } from "../redux/actions/detailActions";
+import { useDispatch, useSelector } from "react-redux";
 
 function Trailer() {
     const { movieId } = useParams();
-    const [trailerMovies, setTrailerMovies] = useState();
+    // const [trailerMovies, setTrailerMovies] = useState();
+    const dispatch = useDispatch();
+
+    const { detail } = useSelector((state) => state.movie);
+
+    const [errors, setErrors] = useState({
+        isError: false,
+        message: null,
+    })
 
     useEffect(() => {
-        const getTrailerMovies = async () => {
-            try {
-                //get token from local storage
-                const token = localStorage.getItem("token");
-                if (!token) return;
+        dispatch(getDetailMovie(movieId, setErrors, errors));
+    }, [dispatch]);
 
-                const response = await axios.get(
-                    `${import.meta.env.VITE_API_URL}/api/v1/movie/${movieId}`,
-                    {
-                        headers: {
-                            Authorization: `Bearer ${token}`,
-                        },
-                    }
-                );
-
-                const { data } = response.data;
-
-                setTrailerMovies(data);
-
-            } catch (error) {
-                if (axios.isAxiosError(error)) {
-                    alert(error?.response?.data?.message);
-                    return;
-                }
-                alert(error?.message);
-            }
-        };
-
-        getTrailerMovies();
-    }, [movieId]);
-
-    if (!trailerMovies) {
+    if (!detail) {
         return <div>Loading...</div>
     }
 
-    const videoUrl = `https://www.youtube.com/watch?v=${trailerMovies.videos[0].key}`
+    const videoUrl = `https://www.youtube.com/watch?v=${detail.videos[0].key}`
 
     return (
         <>
@@ -57,10 +38,10 @@ function Trailer() {
                 </Link>
                 <div className="flex flex-col items-center">
                     {/* mengambil satu video dari API Movie Details menggunakan method slice dengan mapping karena data video terlampau banyak */}
-                    {trailerMovies.videos.slice(0, 1).map((key) => (
+                    {detail.videos.map((video, key) => (
                         <iframe
                             key={key}
-                            src={`https://www.youtube.com/embed/${trailerMovies.videos[0].key}`}
+                            src={`https://www.youtube.com/embed/${detail.videos[0].key}`}
                             frameBorder="0"
                             className="w-96 h-56 lg:w-[1300px] lg:h-[550px]"
                             allowFullScreen
