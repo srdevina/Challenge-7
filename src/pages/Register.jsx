@@ -1,8 +1,10 @@
 import { useState } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import GoogleLogin from "../components/GoogleLogin";
 import { BiSolidUserDetail } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { register } from "../redux/actions/authActions";
 
 const Register = () => {
   const [firstname, setFirstName] = useState("");
@@ -10,8 +12,11 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmpassword, setConfirmPassword] = useState("");
-  const [passwerror, setPasswError] = useState("");
+  const [passworderror, setPasswordError] = useState("");
   const [name, setName] = useState("");
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleFirstName = (event) => {
     setFirstName(event.target.value);
@@ -30,9 +35,9 @@ const Register = () => {
 
   const passwordValidation = (password, confirm) => {
     if (password !== confirm) {
-      setPasswError("Password not match!");
+      setPasswordError("Password not match!");
     } else {
-      setPasswError("");
+      setPasswordError("");
     }
   };
   const handlePasswordMatch = (event) => {
@@ -47,30 +52,7 @@ const Register = () => {
   const regis = async (event) => {
     event.preventDefault();
 
-    try {
-      const response = await axios.post(
-        `${import.meta.env.VITE_API_URL}/api/v1/auth/register`,
-        {
-          email,
-          name,
-          password,
-        }
-      );
-
-      // Check for successful registration
-      if (response.status === 201) {
-        alert("Registration successful!");
-        window.location.replace("/login");
-      } else {
-        alert("Registration failed. Please try again.");
-      }
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        alert(error?.response?.data?.message);
-        return;
-      }
-      alert(error?.message);
-    }
+    dispatch(register(email, name, password, navigate));
   };
 
   return (
@@ -211,9 +193,9 @@ const Register = () => {
                   required
                 />
               </label>
-              {passwerror && (
+              {passworderror && (
                 <p className=" px-2 text-sm col-span-6 text-pink-700 ">
-                  {passwerror}
+                  {passworderror}
                 </p>
               )}
             </div>
