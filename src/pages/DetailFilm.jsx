@@ -14,6 +14,7 @@ function DetailFilm() {
     const dispatch = useDispatch();
 
     const { detail } = useSelector((state) => state.movie);
+    console.log(detail)
 
     const [errors, setErrors] = useState({
         isError: false,
@@ -23,7 +24,7 @@ function DetailFilm() {
     //get API from popular movie in components PopularMovie by id 
     useEffect(() => {
         dispatch(getDetailMovie(movieId, setErrors, errors));
-    }, [dispatch]);
+    }, []);
 
     if (!detail) {
         return <div>Loading...</div>
@@ -43,11 +44,16 @@ function DetailFilm() {
                         <div className="text-6xl font-extrabold mb-4">
                             {detail.original_title}
                         </div>
-                        {/* <div className="flex gap-3">
-                            {detail.genres.map((genre, key) => (
-                                <li key={key} type="none" className="text-white text-lg font-medium">{detail.genres[key].name}</li>
-                            ))}
-                        </div> */}
+                        {/* {(detail)
+                            ?
+                            <div className="flex gap-3">
+                                {detail.genres.map((genre, key) => (
+                                    <li key={key} type="none" className="text-white text-lg font-medium">{detail.genres[key].name}</li>
+                                ))}
+                            </div>
+                            :
+                            <div></div>
+                        } */}
                         <div className="text-lg lg:w-[700px] mt-4 mb-4">
                             {detail.overview}
                         </div>
