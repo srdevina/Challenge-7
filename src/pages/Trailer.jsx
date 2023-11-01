@@ -19,7 +19,7 @@ function Trailer() {
 
     useEffect(() => {
         dispatch(getDetailMovie(movieId, setErrors, errors));
-    }, [dispatch]);
+    }, []);
 
     if (!detail) {
         return <div>Loading...</div>
