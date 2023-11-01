@@ -25,37 +25,6 @@ function HasilPencarian() {
         dispatch(getSearchMovies(errors, setErrors, query, page));
     }, [])
 
-
-    // useEffect(() => {
-    //     const getSearchMovie = async () => {
-    //         try {
-    //             //get token from local storage
-    //             const token = localStorage.getItem("token");
-    //             if (!token) return;
-
-    //             // Get the data from API with query and page variable
-    //             const response = await axios.get(
-    //                 `${import.meta.env.VITE_API_URL
-    //                 }/api/v1/search/movie?page=${page}&query=${query}`,
-    //                 {
-    //                     headers: {
-    //                         Authorization: `Bearer ${token}`,
-    //                     },
-    //                 }
-    //             );
-    //             // Set state for the movie that have been searched
-    //             const { data } = response.data;
-    //             console.log(data)
-    //             setSearchMovie(data);
-    //         } catch (error) {
-    //             console.error(error);
-    //         }
-    //     };
-    //     getSearchMovie();
-    // }, [query, page]);
-
-    // console.log(searchMovie)
-
     return (
         <>
             <div className="w-full bg-black">
