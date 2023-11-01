@@ -22,13 +22,10 @@ const authSlice = createSlice({
     setUser: (state, action) => {
       state.user = action.payload;
     },
-    setIsRegistered: (state, action) => {
-      state.isRegistered = action.payload;
-    },
   },
 });
 
-export const { setToken, setIsRegistered, setUser } = authSlice.actions;
+export const { setToken, setUser } = authSlice.actions;
 
 // Export the global state, so the variable in the initialState will be available in any component
 export default authSlice.reducer;
