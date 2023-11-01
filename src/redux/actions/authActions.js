@@ -3,46 +3,46 @@ import { setToken, setUser } from "../reducers/authReducer";
 
 export const getMe =
   (navigate, navigatePathSuccess, navigatePathError) =>
-  async (dispatch, getState) => {
-    try {
-      let { token } = getState().auth;
+    async (dispatch, getState) => {
+      try {
+        let { token } = getState().auth;
 
-      // if (!token) {
-      //   navigate("/login")
-      // } else {
-      //   return;
-      // }
+        // if (!token) {
+        //   navigate("/login")
+        // } else {
+        //   return;
+        // }
 
-      const response = await axios.get(
-        `${import.meta.env.VITE_API_URL}/api/v1/auth/me`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      const { data } = response.data;
+        const response = await axios.get(
+          `${import.meta.env.VITE_API_URL}/api/v1/auth/me`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        const { data } = response.data;
 
-      dispatch(setUser(data));
+        dispatch(setUser(data));
 
-      if (navigatePathSuccess) navigate(navigatePathSuccess);
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        //if token is not valid
-        if (error.response.status === 401) {
-          dispatch(logout());
+        if (navigatePathSuccess) navigate(navigatePathSuccess);
+      } catch (error) {
+        if (axios.isAxiosError(error)) {
+          //if token is not valid
+          if (error.response.status === 401) {
+            dispatch(logout());
 
-          if (navigatePathError) navigate(navigatePathError);
+            if (navigatePathError) navigate(navigatePathError);
+            return;
+          }
+
+          alert(error?.response?.data?.message);
           return;
         }
 
-        alert(error?.response?.data?.message);
-        return;
+        alert(error?.message);
       }
-
-      alert(error?.message);
-    }
-  };
+    };
 
 export const login = (email, password, navigate) => async (dispatch) => {
   try {

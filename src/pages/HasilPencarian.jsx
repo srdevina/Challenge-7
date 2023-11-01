@@ -1,44 +1,60 @@
 import { useEffect, useState } from "react";
 import { useSearchParams, Link } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 import Footer from "../components/Footer";
+import { useDispatch, useSelector } from "react-redux"
+import { getSearchMovies } from "../redux/actions/searchActions";
 
 function HasilPencarian() {
     const [searchParams] = useSearchParams();
-    const [searchMovie, setSearchMovie] = useState([]);
+    // const [searchMovie, setSearchMovie] = useState([]);
 
     const query = searchParams.get("query");
     const page = searchParams.get("page");
 
+    const dispatch = useDispatch();
+
+    const { search } = useSelector((state) => state.search);
+
+    const [errors, setErrors] = useState({
+        isError: false,
+        message: null,
+    });
+
     useEffect(() => {
-        const getSearchMovie = async () => {
-            try {
-                //get token from local storage
-                const token = localStorage.getItem("token");
-                if (!token) return;
+        dispatch(getSearchMovies(errors, setErrors, query, page));
+    }, [])
 
-                    // Get the data from API with query and page variable
-                    const response = await axios.get(
-                        `${import.meta.env.VITE_API_URL
-                        }/api/v1/search/movie?page=${page}&query=${query}`,
-                        {
-                            headers: {
-                                Authorization: `Bearer ${token}`,
-                            },
-                        }
-                    );
-                // Set state for the movie that have been searched
-                const { data } = response.data;
-                console.log(data)
-                setSearchMovie(data);
-            } catch (error) {
-                console.error(error);
-            }
-        };
-        getSearchMovie();
-    }, [query, page]);
 
-    console.log(searchMovie)
+    // useEffect(() => {
+    //     const getSearchMovie = async () => {
+    //         try {
+    //             //get token from local storage
+    //             const token = localStorage.getItem("token");
+    //             if (!token) return;
+
+    //             // Get the data from API with query and page variable
+    //             const response = await axios.get(
+    //                 `${import.meta.env.VITE_API_URL
+    //                 }/api/v1/search/movie?page=${page}&query=${query}`,
+    //                 {
+    //                     headers: {
+    //                         Authorization: `Bearer ${token}`,
+    //                     },
+    //                 }
+    //             );
+    //             // Set state for the movie that have been searched
+    //             const { data } = response.data;
+    //             console.log(data)
+    //             setSearchMovie(data);
+    //         } catch (error) {
+    //             console.error(error);
+    //         }
+    //     };
+    //     getSearchMovie();
+    // }, [query, page]);
+
+    // console.log(searchMovie)
 
     return (
         <>
@@ -47,7 +63,7 @@ function HasilPencarian() {
                     {`Search = ${query}`}
                 </h1>
                 <div className="grid lg:grid-cols-4 md:grid-cols-2">
-                    {searchMovie.map((search) => (
+                    {search.map((search) => (
                         <div
                             key={search.id}
                             className="border-2 border-red-800 hover:border-white p-2 m-4 flex justify-center cursor-pointer">
