@@ -22,17 +22,7 @@ const authSlice = createSlice({
         setUser: (state, action) => {
             state.user = action.payload;
         },
-        setIsRegistered: (state, action) => {
-            state.isRegistered = action.payload;
-        },
     },
-<<<<<<< HEAD
-=======
-    setUser: (state, action) => {
-      state.user = action.payload;
-    },
-  },
->>>>>>> 0a7cab54e1cd7ea3ee1d72e0c85ecbc0a3a4e2f3
 });
 
 export const { setToken, setUser } = authSlice.actions;
