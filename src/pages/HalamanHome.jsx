@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import MainSection from "../components/MainSection";
-import PopularMovie from "../components/PopularMovie"
+
+import PopularMovie from "../components/PopularMovie";
 import Footer from "../components/Footer";
-import "slick-carousel/slick/slick.css"
+import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
@@ -69,7 +70,9 @@ function HalamanHome() {
             <div key={movie.id} ref={linkRef}>
               <MainSection
                 trailer={movie.id}
-                imageURL={import.meta.env.VITE_BACKDROP_PATH + movie.backdrop_path}
+                imageURL={
+                  import.meta.env.VITE_BACKDROP_PATH + movie.backdrop_path
+                }
                 title={movie.title}
                 overview={movie.overview}
               />
@@ -78,11 +81,8 @@ function HalamanHome() {
         </Slider>
       </div>
       <PopularMovie />
-      <Footer
-        linkRef={linkRef}
-        goto={goto}
-      />
-    </div >
+      <Footer linkRef={linkRef} goto={goto} />
+    </div>
   );
 }
 
