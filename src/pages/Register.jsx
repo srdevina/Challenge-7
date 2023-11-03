@@ -5,6 +5,7 @@ import { BiSolidUserDetail } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { register } from "../redux/actions/authActions";
+
 import Slider from "react-slick";
 
 import captenAmerica from "../assets/captain-america_449504.png";
@@ -59,10 +60,12 @@ const Register = () => {
       setPasswordError("");
     }
   };
+
   const handlePasswordMatch = (event) => {
     setPassword(event.target.value);
     passwordValidation(event.target.value, confirmpassword);
   };
+
   const handleConfirmPasswordMatch = (event) => {
     setConfirmPassword(event.target.value);
     passwordValidation(password, event.target.value);
@@ -94,9 +97,9 @@ const Register = () => {
 
   return (
     <>
-      <div className=" flex flex-col gap-5 lg-gap-0 lg:flex-row items-center justify-evenly bg-gradient-to-r from-cyan-800 via-slate-950 bg-slate-950 w-full py-14">
+      <div className="flex flex-col gap-5 lg-gap-0 lg:flex-row items-center justify-evenly bg-gradient-to-l from-cyan-800 via-slate-950 bg-slate-950 w-full py-14">
         {/* movie text */}
-        <div className="flex flex-col w-full max-w-lg ">
+        <div className="flex flex-col w-full max-w-lg lg:-mt-48">
           <div className="bg-slate-900 bg-opacity-50 p-10 rounded-2xl">
             <h1 className="text-white font-medium lg:text-lg lg:mb-2">
               Welcome to 🎞️🍿
@@ -118,7 +121,7 @@ const Register = () => {
         </div>
 
         {/* box register */}
-        <div className="boxs bg-slate-900  rounded-xl p-5 w-full max-w-lg ">
+        <div className="boxs bg-slate-900 rounded-xl p-5 w-full max-w-lg ">
           <span className="box2"></span>
           <div className="box-s relative z-50">
             <div className="text-3xl font-bold mb-4 flex flex-row items-center justify-center text-red-600">
@@ -131,7 +134,7 @@ const Register = () => {
               className="mt-6 flex flex-col gap-5"
             >
               <div className="flex gap-6">
-                <div className="shadow-lg shadow-slate-700 rounded-xl w-full p-4">
+                <div className="shadow-lg shadow-slate-700 rounded-xl w-full p-4 hover:bg-cyan-500 hover:bg-opacity-20 hover:border">
                   <label
                     htmlFor="Firstname"
                     className="block text-white font-semibold mb-2 
@@ -145,7 +148,7 @@ const Register = () => {
                     type="text"
                     id="FirstName"
                     placeholder="nama depan..."
-                    className="py-3 px-2 border border-slate-300 rounded-xl w-full text-sm placeholder:text-slate-400
+                    className="py-2 px-2 border border-slate-300 rounded-xl w-full text-sm placeholder:text-slate-400
                                       focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500\
                                       invalid:text-pink-700
                                       invalid:focus:ring-pink-700
@@ -157,7 +160,7 @@ const Register = () => {
                   />
                 </div>
 
-                <div className="shadow-lg shadow-slate-700 w-full rounded-xl p-4">
+                <div className="shadow-lg shadow-slate-700 w-full rounded-xl p-4 hover:bg-cyan-500 hover:bg-opacity-20 hover:border">
                   <label
                     htmlFor="Lastname"
                     className="block font-semibold mb-2 text-white
@@ -171,7 +174,7 @@ const Register = () => {
                     type="text"
                     id="LastName"
                     placeholder="nama belakang..."
-                    className="py-3 px-2 border border-slate-300 rounded-xl w-full text-sm placeholder:text-slate-400
+                    className="py-2 px-2 border border-slate-300 rounded-xl w-full text-sm placeholder:text-slate-400
                   focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500\
                   invalid:text-pink-700
                   invalid:focus:ring-pink-700
@@ -186,7 +189,7 @@ const Register = () => {
 
               <div className="">
                 <label htmlFor="email">
-                  <div className=" shadow-lg shadow-slate-700 rounded-xl p-4">
+                  <div className=" shadow-lg shadow-slate-700 rounded-xl p-4 hover:bg-cyan-500 hover:bg-opacity-20 hover:border">
                     <span
                       className="block  font-semibold mb-2 text-white
                       after:content-['*']
@@ -199,7 +202,7 @@ const Register = () => {
                       type="email"
                       id="email"
                       placeholder="masukkan email..."
-                      className="py-3 px-2 border border-slate-300 rounded-xl w-full text-sm placeholder:text-slate-400
+                      className="py-2 px-2 border border-slate-300 rounded-xl w-full text-sm placeholder:text-slate-400
                                       focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500\
                                       invalid:text-pink-700
                                       invalid:focus:ring-pink-700
@@ -215,7 +218,7 @@ const Register = () => {
                 </label>
               </div>
 
-              <div className="shadow-lg shadow-slate-700 rounded-xl p-4">
+              <div className="shadow-lg shadow-slate-700 rounded-xl p-4 hover:bg-cyan-500 hover:bg-opacity-20 hover:border">
                 <label htmlFor="password">
                   <span
                     className="block font-semibold mb-2 text-white
@@ -229,7 +232,7 @@ const Register = () => {
                     type="password"
                     id="password"
                     placeholder="masukkan password..."
-                    className="py-3 px-2 border border-slate-300 rounded-xl w-full text-sm placeholder:text-slate-400
+                    className="py-2 px-2 border border-slate-300 rounded-xl w-full text-sm placeholder:text-slate-400
                                       focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500\"
                     value={password}
                     onChange={handlePasswordMatch}
@@ -238,7 +241,7 @@ const Register = () => {
                 </label>
               </div>
 
-              <div className="shadow-lg shadow-slate-700 rounded-xl p-4">
+              <div className="shadow-lg shadow-slate-700 rounded-xl p-4 hover:bg-cyan-500 hover:bg-opacity-20 hover:border">
                 <label htmlFor="confirmpassword">
                   <span
                     className="block font-semibold mb-2 text-white
@@ -252,7 +255,7 @@ const Register = () => {
                     type="password"
                     id="confirmpassword"
                     placeholder="masukkan password kembali..."
-                    className="py-3 px-2 border border-slate-300 rounded-xl w-full text-sm placeholder:text-slate-400
+                    className="py-2 px-2 border border-slate-300 rounded-xl w-full text-sm placeholder:text-slate-400
                                       focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500\"
                     value={confirmpassword}
                     onChange={handleConfirmPasswordMatch}

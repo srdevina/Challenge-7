@@ -2,19 +2,19 @@ import { createSlice } from "@reduxjs/toolkit";
 
 // initial state
 const initialState = {
-    search: [],
+    searching: [],
 };
 
 const movieSlice = createSlice({
-    name: "search",
+    name: "searching",
     initialState,
     reducers: {
-        setSearch: (state, action) => {
-            state.search = action.payload;
+        setSearching: (state, action) => {
+            state.searching = action.payload;
         },
     },
 });
 
-export const { setSearch } = movieSlice.actions;
+export const { setSearching } = movieSlice.actions;
 
 export default movieSlice.reducer;

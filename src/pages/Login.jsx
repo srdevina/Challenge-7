@@ -49,7 +49,7 @@ const Login = () => {
 
   return (
     <>
-      <div className="bg-slate-950 w-full h-screen">
+      <div className="bg-slate-950 w-full h-[900px] lg:h-screen">
         <div
           className={`absolute px-4 lg:pt-20 w-full lg:w-full lg:px-[760px]
                             ${
@@ -63,8 +63,10 @@ const Login = () => {
                                                     lg:absolute lg:top-[299px] lg:left-[980px]"
             ></div>
           )}
-          <div className="w-80 h-screen lg:w-[700px] lg:h-screen rounded-e-[60px] bg-gradient-to-r from-cyan-800 bg-opacity-50 absolute left-0 top-0">
-            <div className="lg:mt-48 lg:w-96 lg:p-12 lg:rounded-2xl lg:ml-40 lg:bg-slate-900 lg:bg-opacity-50 lg:flex lg:flex-col lg:shadow-2xl">
+          
+          {/* card movie */}
+          <div className="w-80 h-[900px] lg:w-[700px] lg:h-screen rounded-e-[60px] bg-gradient-to-r from-cyan-800 bg-opacity-50 absolute left-0 top-0">
+            <div className="flex flex-col lg:mt-48 lg:w-96 lg:h-72 lg:p-12 lg:rounded-2xl lg:ml-40 lg:bg-slate-900 lg:bg-opacity-50 lg:flex lg:flex-col lg:shadow-2xl">
               <div className="mt-4 mx-4 lg:mt-0 lg:mx-0">
                 <h1 className="text-white text-base font-medium lg:font-medium lg:text-lg lg:mb-2">
                   Welcome to 🎞️🍿
@@ -73,8 +75,8 @@ const Login = () => {
                   MovieList
                 </p>
               </div>
-              <div className="absolute top-2 -right-36 left-56 lg:relative overflow-clip lg:right-0 lg:left-0 lg:top-0">
-                <Slider {...settings} className="lg:mt-6">
+              <div className=" ml-5 lg:relative lg:right-0 lg:left-0 lg:top-0">
+                <Slider {...settings} className="lg:mt-2 w-52 h-64 lg:w-72 overflow-hidden">
                   <img
                     src={captenAmerica}
                     alt="icon capten america"
@@ -99,7 +101,7 @@ const Login = () => {
           </div>
 
           {/* login card */}
-          <div className="box mt-[94px] lg:mt-0 right-3">
+          <div className="box mt-[150px] lg:mt-0 lg:w-[480px]">
             <span className="box2"></span>
             <div className=" box3 bg-slate-700 bg-opacity-10 rounded-xl px-5 pb-5 pt-4">
               <div className="text-3xl font-bold mb-2 flex flex-row items-center justify-center text-white">
@@ -107,7 +109,7 @@ const Login = () => {
                 <h1 className="text-cyan-400">Login</h1>
               </div>
               <form action="submit" onSubmit={onLogin} className="p-2">
-                <div className="px-4 pt-4 pb-1 shadow-lg shadow-slate-700 rounded-xl mb-9 hover:bg-cyan-500 hover:bg-opacity-20 hover:border">
+                <div className="px-4 pt-4 pb-1 shadow-lg shadow-slate-700  rounded-xl mb-9 hover:bg-cyan-500 hover:bg-opacity-20 hover:border">
                   <label htmlFor="email">
                     <span
                       className="text-white block font-semibold mb-2

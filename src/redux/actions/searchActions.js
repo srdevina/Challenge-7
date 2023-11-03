@@ -1,5 +1,5 @@
 import axios from "axios";
-import { setSearch } from "../reducers/searchReducer";
+import { setSearching } from "../reducers/searchReducer";
 
 export const getSearchMovies =
   (errors, setErrors, query, page = 1) =>
@@ -20,7 +20,7 @@ export const getSearchMovies =
       );
       const { data } = response.data;
 
-      dispatch(setSearch(data));
+      dispatch(setSearching(data));
       setErrors({ ...errors, isError: false });
     } catch (error) {
       if (axios.isAxiosError(error)) {
