@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { register } from "../redux/actions/authActions";
 import Slider from "react-slick";
+
 import captenAmerica from "../assets/captain-america_449504.png";
 import spiderMan from "../assets/spiderman_1090806.png";
 import xman from "../assets/xman.png";
@@ -53,7 +54,7 @@ const Register = () => {
 
   const passwordValidation = (password, confirm) => {
     if (password !== confirm) {
-      setPasswordError("Password not match!");
+      setPasswordError("Password Not Match!");
     } else {
       setPasswordError("");
     }
@@ -69,6 +70,10 @@ const Register = () => {
 
   const regis = async (event) => {
     event.preventDefault();
+    if (passworderror) {
+      alert("Password and Confirm Password not match! , Try Again!");
+      return;
+    }
 
     dispatch(register(email, name, password, navigate));
   };
@@ -255,7 +260,7 @@ const Register = () => {
                   />
                 </label>
                 {passworderror && (
-                  <p className=" px-2 text-sm text-pink-700 ">
+                  <p className="mt-3 px-2 text-sm text-red-500 ">
                     {passworderror}
                   </p>
                 )}
