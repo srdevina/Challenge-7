@@ -40,10 +40,12 @@ const Register = () => {
       setPasswordError("");
     }
   };
+
   const handlePasswordMatch = (event) => {
     setPassword(event.target.value);
     passwordValidation(event.target.value, confirmpassword);
   };
+
   const handleConfirmPasswordMatch = (event) => {
     setConfirmPassword(event.target.value);
     passwordValidation(password, event.target.value);
@@ -54,6 +56,7 @@ const Register = () => {
 
     dispatch(register(email, name, password, navigate));
   };
+
 
   return (
     <>

@@ -14,7 +14,7 @@ function HasilPencarian() {
 
     const dispatch = useDispatch();
 
-    const { search } = useSelector((state) => state.search);
+    const { searching } = useSelector((state) => state.search);
 
     const [errors, setErrors] = useState({
         isError: false,
@@ -23,7 +23,7 @@ function HasilPencarian() {
 
     useEffect(() => {
         dispatch(getSearchMovies(errors, setErrors, query, page));
-    }, [])
+    }, [query, page])
 
     return (
         <>
@@ -32,7 +32,7 @@ function HasilPencarian() {
                     {`Search = ${query}`}
                 </h1>
                 <div className="grid lg:grid-cols-4 md:grid-cols-2">
-                    {search.map((search) => (
+                    {searching.map((search) => (
                         <div
                             key={search.id}
                             className="border-2 border-red-800 hover:border-white p-2 m-4 flex justify-center cursor-pointer">

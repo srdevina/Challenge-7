@@ -118,7 +118,7 @@ const Login = () => {
                 <h1 className="text-cyan-400">Login</h1>
               </div>
               <form action="submit" onSubmit={onLogin} className="p-2">
-                <div className="px-4 pt-4 pb-1 shadow-lg shadow-slate-700 rounded-xl mb-9 hover:bg-cyan-500 hover:bg-opacity-20 hover:border">
+                <div className="px-4 pt-4 pb-1 shadow-lg shadow-slate-700  rounded-xl mb-9 hover:bg-cyan-500 hover:bg-opacity-20 hover:border">
                   <label htmlFor="email">
                     <span
                       className="text-white block font-semibold mb-2

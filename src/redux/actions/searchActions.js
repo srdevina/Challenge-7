@@ -1,9 +1,9 @@
 import axios from "axios";
-import { setSearch } from "../reducers/searchReducer";
+import { setSearching } from "../reducers/searchReducer";
 
 export const getSearchMovies =
-    (errors, setErrors, query) =>
-        async (dispatch, getState, page = 1) => {
+    (errors, setErrors, query, page = 1) =>
+        async (dispatch, getState) => {
             try {
                 const { token } = getState().auth;
                 if (!token) return;
@@ -18,7 +18,7 @@ export const getSearchMovies =
                 );
                 const { data } = response.data;
 
-                dispatch(setSearch(data));
+                dispatch(setSearching(data));
                 setErrors({ ...errors, isError: false });
             } catch (error) {
                 if (axios.isAxiosError(error)) {

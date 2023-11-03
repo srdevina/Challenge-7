@@ -8,3 +8,4 @@ export default combineReducers({
   movie: movieReducer,
   search: searchReducer
 });
+
