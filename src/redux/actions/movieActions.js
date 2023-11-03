@@ -16,7 +16,7 @@ export const getPopularMovies =
         }
       );
       const { data } = response.data;
-      const popular = data.slice(1, 4)
+      const popular = data.slice(1, 4);
 
       // Set the popular movie to global state
       dispatch(setPopular(popular));
@@ -40,7 +40,6 @@ export const getPopularMovies =
     }
   };
 
-
 export const getPopularSlice =
   (setErrors, errors) => async (dispatch, getState) => {
     try {
@@ -56,7 +55,7 @@ export const getPopularSlice =
         }
       );
       const { data } = response.data;
-      const popularSlice = data.slice(0, 20)
+      const popularSlice = data.slice(0, 20);
 
       // Set the popular movie to global state
       dispatch(setPopularSlice(popularSlice));

@@ -1,60 +1,103 @@
-.box{
-    position: relative;
-    width: 480px;
-    overflow: hidden;
-    border-radius: 20px;
+.box {
+  position: relative;
+  width: 480px;
+  overflow: hidden;
+  border-radius: 20px;
 }
 
-.box::after
-{
-    content: '';
-    position: absolute;
-    width: 1000px;
-    height: 1000px;
-    top: -36%;
-    left: -55%;
-    background-image: conic-gradient(transparent, transparent, transparent, #FF0000);
-    animation: animate 4s linear infinite;
-    animation-delay: 2s;
+.boxs {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  z-index: 1000000;
 }
 
-.box::before
-{
-    content: '';
-    position: absolute;
-    width: 1000px;
-    height: 1000px;
-    top: -36%;
-    left: -55%;
-    background-image: conic-gradient(transparent, transparent, transparent, #00ccff);
-    animation: animate 4s linear infinite;
+.box::after {
+  content: "";
+  position: absolute;
+  width: 1000px;
+  height: 1000px;
+  top: -36%;
+  left: -55%;
+  background-image: conic-gradient(
+    transparent,
+    transparent,
+    transparent,
+    #ff0000
+  );
+  animation: animate 4s linear infinite;
+  animation-delay: 2s;
 }
 
-
-@keyframes animate 
-{
-    0%
-    {
-        transform: rotate(0deg);
-    }
-    100%
-    {
-        transform: rotate(360deg);
-    }
+.box::before {
+  content: "";
+  position: absolute;
+  width: 1000px;
+  height: 1000px;
+  top: -36%;
+  left: -55%;
+  background-image: conic-gradient(
+    transparent,
+    transparent,
+    transparent,
+    #00ccff
+  );
+  animation: animate 4s linear infinite;
 }
 
-
-.box2
-{
-    position: absolute;
-    inset: 5px;
-    border-radius: 16px;
-    background: #0c1022;
-    z-index: 1;
+.boxs::after {
+  content: "";
+  position: absolute;
+  width: 1000px;
+  height: 1000px;
+  top: -10%;
+  left: -50%;
+  background-image: conic-gradient(
+    transparent,
+    transparent,
+    transparent,
+    #ff0000
+  );
+  animation: animate 4s linear infinite;
+  animation-delay: 2s;
+  z-index: 0;
 }
 
-.box3 
-{
-    position: relative;
-    z-index: 2
+.boxs::before {
+  content: "";
+  position: absolute;
+  width: 1000px;
+  height: 1000px;
+  top: -10%;
+  left: -50%;
+  background-image: conic-gradient(
+    transparent,
+    transparent,
+    transparent,
+    #00ccff
+  );
+  animation: animate 4s linear infinite;
+  z-index: 0;
+}
+
+.box2 {
+  position: absolute;
+  inset: 5px;
+  border-radius: 16px;
+  background: #0c1022;
+  z-index: 1;
+}
+
+.box3 {
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes animate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
