@@ -97,7 +97,7 @@ const Register = () => {
 
   return (
     <>
-      <div className="flex flex-col gap-5 lg-gap-0 lg:flex-row items-center justify-evenly bg-gradient-to-l from-cyan-800 via-slate-950 bg-slate-950 w-full py-14">
+      <div className="flex flex-col gap-5 lg-gap-0 lg:flex-row items-center justify-evenly bg-gradient-to-r from-cyan-800 via-slate-950 bg-slate-950 w-full py-14">
         {/* movie text */}
         <div className="flex flex-col w-full max-w-lg lg:-mt-48">
           <div className="bg-slate-900 bg-opacity-50 p-10 rounded-2xl">
@@ -107,7 +107,7 @@ const Register = () => {
             <h2 className="text-red-600 text-4xl font-extrabold lg:text-6xl">
               MovieList
             </h2>
-            <div className=" w-full">
+            <div className="w-full">
               <Slider {...settings} className="mt-6">
                 <img src={captenAmerica} className="p-3 lg:p-4"></img>
                 <img src={hulk} className="p-3 lg:p-4"></img>
