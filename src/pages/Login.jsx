@@ -58,9 +58,9 @@ const Login = () => {
         >
           {isLoading && (
             <div
-              className=" animate-spin w-8 h-8 border-t-4 border-r-4 border-blue-500 rounded-full
-                                                    absolute top-64 left-56
-                                                    lg:absolute lg:top-[299px] lg:left-[980px]"
+              className="z-10 animate-spin w-8 h-8 border-t-4 border-r-4 border-blue-500 rounded-full
+                                                    absolute top-96 left-56
+                                                    lg:absolute lg:top-[299px] lg:left-[984px]"
             ></div>
           )}
           
