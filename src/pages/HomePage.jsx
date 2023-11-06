@@ -62,6 +62,7 @@ function HomePage() {
     ),
   };
 
+  //AOS animate
   return (
     <div>
       <div className="w-full bg-black">

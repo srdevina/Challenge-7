@@ -1,20 +1,39 @@
 import { AiFillInstagram } from "react-icons/ai";
 import { Link } from "react-router-dom"
 import PropTypes from "prop-types"
+import { useEffect } from "react";
+
+import AOS from "aos";
+import '../../node_modules/aos/dist/aos.css';
 
 function Footer({ linkRef, goto }) {
+
+    // AOS (Animate On Scroll)
+    useEffect(() => {
+        AOS.init({
+            once: true,
+        })
+    }, [])
+
     return (
         <>
             <div className="w-full pb-8 px-4 bg-black border-t-2 border-t-red-600 lg:mt-0 lg:pt-10 lg:px-8 lg:pb-8">
                 <div className="flex flex-col gap-2 lg:flex lg:flex-row lg:justify-evenly md:flex md:flex-row md:justify-evenly md:pt-6">
                     <div className="justify-center md:border-r-2 md:border-r-red-600 flex items-center p-10" >
                         <header
+                            data-aos="fade-right"
+                            data-aos-delay="300"
+                            data-aos-duration="800"
                             className="text-white font-extrabold text-2xl lg:text-5xl cursor-pointer"
                             onClick={() => goto(linkRef.current)}>
                             MovieList
                         </header>
                     </div>
-                    <div className="text-lg">
+                    <div
+                        data-aos="fade-left"
+                        data-aos-delay="600"
+                        data-aos-duration="800" 
+                        className="text-lg">
                         <p className="text-white font-bold text-xl mb-2">
                             Team-7
                         </p>
@@ -27,7 +46,11 @@ function Footer({ linkRef, goto }) {
                             </ul>
                         </div>
                     </div>
-                    <div className="text-lg">
+                    <div
+                        data-aos="fade-left"
+                        data-aos-delay="900"
+                        data-aos-duration="800"  
+                        className="text-lg">
                         <p className="text-white font-bold text-xl mb-2">
                             My Partner
                         </p>
