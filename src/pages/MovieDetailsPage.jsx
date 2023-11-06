@@ -8,6 +8,9 @@ import { FaPlay } from "react-icons/fa6";
 import { getDetailMovie } from "../redux/actions/detailActions";
 import { useDispatch, useSelector } from "react-redux";
 
+import AOS from "aos";
+import '../../node_modules/aos/dist/aos.css';
+
 function MovieDetailsPage() {
   const { movieId } = useParams();
   const dispatch = useDispatch();
@@ -22,6 +25,12 @@ function MovieDetailsPage() {
   //get API from popular movie in components PopularMovie by id
   useEffect(() => {
     dispatch(getDetailMovie(movieId, setErrors, errors));
+
+    // AOS (Animate On Scroll)
+    AOS.init({
+      once: true,
+    });
+
   }, []);
 
   if (!detail) {
@@ -39,16 +48,24 @@ function MovieDetailsPage() {
       <div className="bg-black pt-8 pb-8 lg:bg-transparent lg:absolute lg:bottom-32 px-8">
         <div className=" text-white ">
           <div className=" flex flex-col justify-center ">
-            <div className="text-6xl font-extrabold mb-4">
+            <div
+              data-aos="fade-right"
+              data-aos-delay="500"
+              className="text-6xl font-extrabold mb-4">
               {detail.original_title}
             </div>
-            <div className="text-lg lg:w-[700px] mt-4 mb-4">
+            <div
+              data-aos="fade-right"
+              data-aos-delay="1000"
+              className="text-lg lg:w-[700px] mt-4 mb-4">
               {detail.overview}
             </div>
             {detail && detail.genres ? (
               <div className="flex gap-4 mb-7 mt-5">
                 {detail.genres.slice(0, 3).map((genre, key) => (
                   <li
+                    data-aos="zoom-in"
+                    data-aos-delay="1500"
                     key={key}
                     type="none"
                     className="text-white text-lg font-medium bg-red-600 px-3 py-1 rounded-full lg:text-md lg:px-2 lg:py-0.5"
@@ -60,16 +77,25 @@ function MovieDetailsPage() {
             ) : (
               <div>No genres available</div>
             )}
-            <div className="text-lg font-bold mb-3 flex gap-2">
+            <div
+              data-aos="fade-right"
+              data-aos-delay="2000" 
+              className="text-lg font-bold mb-3 flex gap-2">
               <BsCalendarDateFill className="text-green-400" />
               {detail.release_date}
             </div>
             <div className="font-medium text-lg mb-6">
-              <i className="flex">
+              <i 
+                data-aos="fade-right"
+                data-aos-delay="2000"
+                className="flex">
                 ⭐&nbsp;{parseFloat(detail.vote_average).toFixed(1)}
               </i>
             </div>
-            <div className="hover:text-red-500 mt-3 cursor-pointer border-2 border-red-600 bg-red-600 p-2 w-48 rounded-3xl hover:bg-black text-lg font-bold">
+            <div
+              data-aos="fade-right"
+              data-aos-delay="2500" 
+              className="hover:text-red-500 mt-3 cursor-pointer border-2 border-red-600 bg-red-600 p-2 w-48 rounded-3xl hover:bg-black text-lg font-bold">
               <Link as={Link} to={`/trailer/${detail.id}`}>
                 <button type="button" className="flex gap-3 items-center ml-3 ">
                   <FaPlay />
@@ -82,7 +108,8 @@ function MovieDetailsPage() {
       </div>
       <div className="hidden lg:block text-white text-[250px] hover:text-red-600 lg:absolute lg:right-72 lg:bottom-36 lg:animate-pulse">
         <Link as={Link} to={`/trailer/${detail.id}`}>
-          <MdOutlineSlowMotionVideo />
+          <MdOutlineSlowMotionVideo data-aos="zoom-in"
+            data-aos-delay="1500" />
         </Link>
       </div>
       <Footer />
