@@ -10,7 +10,7 @@ import Slider from "react-slick";
 import { getPopularMovies } from "../redux/actions/movieActions";
 import { useSelector, useDispatch } from "react-redux";
 
-function HalamanHome() {
+function HomePage() {
   const dispatch = useDispatch();
 
   const { popular } = useSelector((state) => state.movie);
@@ -86,4 +86,4 @@ function HalamanHome() {
   );
 }
 
-export default HalamanHome;
+export default HomePage;

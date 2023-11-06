@@ -1,18 +1,19 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import HalamanHome from "./pages/HalamanHome";
-import HasilPencarian from "./pages/HasilPencarian";
-import DetailFilm from "./pages/DetailFilm";
-import NotFound from "./pages/NotFound";
-import Trailer from "./pages/Trailer";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
+import Navbar from "./components/Navbar";
+import SearchResultPage from "./pages/SearchResultPage";
+import HomePage from "./pages/HomePage";
+import MovieDetailsPage from "./pages/MovieDetailsPage";
+import TrailerPage from "./pages/TrailerPage";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import UserPage from "./pages/UserPage";
 import Protected from "./components/Protected";
 import NoAccessToken from "./components/NoAccessToken";
-import HalamanUser from "./pages/HalamanUser";
+import NotFoundPage from "./pages/NotFoundPage";
+
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import Navbar from "./components/Navbar";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 
@@ -30,7 +31,7 @@ function App() {
                 path="/"
                 element={
                   <Protected>
-                    <HalamanHome />
+                    <HomePage />
                   </Protected>
                 }
               />
@@ -39,7 +40,7 @@ function App() {
                 path="/search"
                 element={
                   <Protected>
-                    <HasilPencarian />
+                    <SearchResultPage />
                   </Protected>
                 }
               />
@@ -48,7 +49,7 @@ function App() {
                 path="/detail-film/:movieId"
                 element={
                   <Protected>
-                    <DetailFilm />
+                    <MovieDetailsPage />
                   </Protected>
                 }
               />
@@ -57,7 +58,7 @@ function App() {
                 path="/trailer/:movieId"
                 element={
                   <Protected>
-                    <Trailer />
+                    <TrailerPage />
                   </Protected>
                 }
               />
@@ -66,7 +67,7 @@ function App() {
                 path="/login"
                 element={
                   <NoAccessToken>
-                    <Login />
+                    <LoginPage />
                   </NoAccessToken>
                 }
               />
@@ -75,7 +76,7 @@ function App() {
                 path="/regis"
                 element={
                   <NoAccessToken>
-                    <Register />
+                    <RegisterPage />
                   </NoAccessToken>
                 }
               />
@@ -84,12 +85,12 @@ function App() {
                 path="/myprofile"
                 element={
                   <Protected>
-                    <HalamanUser />
+                    <UserPage />
                   </Protected>
                 }
               />
 
-              <Route path="*" element={<NotFound />} />
+              <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </BrowserRouter>
         </GoogleOAuthProvider>

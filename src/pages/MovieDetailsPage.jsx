@@ -8,12 +8,11 @@ import { FaPlay } from "react-icons/fa6";
 import { getDetailMovie } from "../redux/actions/detailActions";
 import { useDispatch, useSelector } from "react-redux";
 
-function DetailFilm() {
+function MovieDetailsPage() {
   const { movieId } = useParams();
   const dispatch = useDispatch();
 
   const { detail } = useSelector((state) => state.movie);
-  console.log(detail);
 
   const [errors, setErrors] = useState({
     isError: false,
@@ -91,4 +90,4 @@ function DetailFilm() {
   );
 }
 
-export default DetailFilm;
+export default MovieDetailsPage;

@@ -1,4 +1,4 @@
-function NotFound() {
+function NotFoundPage() {
     return (
         <>
             <div className="w-full absolute z-50 h-screen bg-black">
@@ -10,4 +10,4 @@ function NotFound() {
     )
 }
 
-export default NotFound;
+export default NotFoundPage;

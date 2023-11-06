@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 import { useDispatch, useSelector } from "react-redux";
 import { getSearchMovies } from "../redux/actions/searchActions";
 
-function HasilPencarian() {
+function SearchResultPage() {
     const [searchParams] = useSearchParams();
 
     const query = searchParams.get("query");
@@ -51,4 +51,4 @@ function HasilPencarian() {
     );
 }
 
-export default HasilPencarian;
+export default SearchResultPage;

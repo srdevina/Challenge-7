@@ -26,7 +26,7 @@ function SamplePrevArrow(props) {
   return <div style={{ ...style, display: "none" }} />;
 }
 
-const Register = () => {
+const RegisterPage = () => {
   const [firstname, setFirstName] = useState("");
   const [lastname, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -303,4 +303,4 @@ SamplePrevArrow.propTypes = {
   style: PropTypes.object,
 };
 
-export default Register;
+export default RegisterPage;
