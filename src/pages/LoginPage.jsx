@@ -13,7 +13,7 @@ import hulk from "../assets/hulk.png";
 import flash from "../assets/flash.png";
 import ironMan from "../assets/ironMan.png";
 
-const Login = () => {
+const LoginPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -191,4 +191,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginPage;

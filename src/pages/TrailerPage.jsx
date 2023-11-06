@@ -5,7 +5,7 @@ import { BiSolidChevronsLeft } from "react-icons/bi";
 import { getDetailMovie } from "../redux/actions/detailActions";
 import { useDispatch, useSelector } from "react-redux";
 
-function Trailer() {
+function TrailerPage() {
     const { movieId } = useParams();
     // const [trailerMovies, setTrailerMovies] = useState();
     const dispatch = useDispatch();
@@ -66,5 +66,5 @@ function Trailer() {
     )
 }
 
-export default Trailer;
+export default TrailerPage;
 
