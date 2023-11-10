@@ -8,6 +8,8 @@ import { getPopularSlice } from "../redux/actions/movieActions";
 import AOS from "aos";
 import '../../node_modules/aos/dist/aos.css';
 
+import Cliploader from "react-spinners/PulseLoader"
+
 function PopularMovie() {
   const dispatch = useDispatch();
 
@@ -18,6 +20,8 @@ function PopularMovie() {
     message: null,
   });
 
+  const [loading, setLoading] = useState(false)
+
   useEffect(() => {
     // get and use redux
     dispatch(getPopularSlice(setErrors, errors));
@@ -25,7 +29,19 @@ function PopularMovie() {
     // AOS (Animate On Scroll)
     AOS.init({
       once: true,
-    })
+    });
+
+    //loading animation by react-spinner
+    if (getPopularSlice) {
+      return setLoading(true)
+    } else {
+      return;
+    }
+
+    // setLoading(true)
+    // setTimeout(() => {
+    //   setLoading(false)
+    // }, 3000)
 
   }, []);
 
@@ -36,7 +52,15 @@ function PopularMovie() {
   }
 
   if (popularSlice.length === 0) {
-    return <h1>Loading...</h1>;
+    return (
+      <h1 className="flex justify-center bg-black p-10">
+        {loading ?
+          <Cliploader color="#FF0000" loading={loading} size={40} />
+          :
+          ""
+        }
+      </h1>
+    );
   }
 
   //for using when on click text Set All Movies or Set Some Movie
@@ -51,7 +75,7 @@ function PopularMovie() {
         <div className="flex justify-between mb-10">
           <header
             data-aos="fade-right"
-            data-aos-delay="400" 
+            data-aos-delay="400"
             className="text-white text-2xl lg:text-5xl font font-extrabold hover:text-red-600">
             Popular Movie
           </header>

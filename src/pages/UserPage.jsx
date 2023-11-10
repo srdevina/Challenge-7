@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 // import axios from "axios";
 import { BiSolidUserDetail } from "react-icons/bi";
 import { FaUserAstronaut } from "react-icons/fa"
@@ -6,6 +6,9 @@ import { MdMarkEmailRead } from "react-icons/md"
 import { ImUserCheck } from "react-icons/im"
 import { useDispatch, useSelector } from "react-redux";
 import { getMe } from "../redux/actions/authActions";
+
+import { BsFillEyeSlashFill } from "react-icons/bs";
+import { IoEyeSharp } from "react-icons/io5";
 
 const UserPage = () => {
     const dispatch = useDispatch();
@@ -15,6 +18,13 @@ const UserPage = () => {
     useEffect(() => {
         dispatch(getMe(null))
     }, [dispatch]);
+
+    const [showFullEmail, setShowFullEmail] = useState(false);
+
+    const emailToDisplay = showFullEmail
+        ? user?.email
+        : user?.email.replace(/.{4}(?=@)/g, '****');
+
 
     return (
         <>
@@ -36,7 +46,22 @@ const UserPage = () => {
                         </div>
                         <div className="flex items-center gap-3">
                             <MdMarkEmailRead className="text-red-600 w-6 h-10" />
-                            <p><i>{user?.email}</i></p>
+                            {/* <p><i>{user?.email}</i></p> */}
+
+                            <p>
+                                {showFullEmail ? (
+                                    <i>{user?.email}</i>
+                                ) : (
+                                    <i>{emailToDisplay}</i>
+                                )}
+                            </p>
+                            <button onClick={() => setShowFullEmail(!showFullEmail)}>
+                                {showFullEmail ?
+                                    <IoEyeSharp />
+                                    :
+                                    <BsFillEyeSlashFill />
+                                }
+                            </button>
                         </div>
                     </div>
                 </div>
