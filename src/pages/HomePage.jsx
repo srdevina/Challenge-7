@@ -10,6 +10,8 @@ import Slider from "react-slick";
 import { getPopularMovies } from "../redux/actions/movieActions";
 import { useSelector, useDispatch } from "react-redux";
 
+import PacmanLoader from "react-spinners/PacmanLoader"
+
 function HomePage() {
   const dispatch = useDispatch();
 
@@ -21,8 +23,19 @@ function HomePage() {
     message: null,
   });
 
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     dispatch(getPopularMovies(setErrors, errors));
+
+    //loading animation by react-spinner
+    if (getPopularMovies) {
+      return (
+        setLoading(true)
+      )
+    } else {
+      return;
+    }
   }, []);
 
   if (errors.isError) {
@@ -30,7 +43,15 @@ function HomePage() {
   }
 
   if (popular.length === 0) {
-    return <h1>Loading...</h1>;
+    return (
+      <h1 className="flex justify-cente qr absolute lg:mt-52 lg:left-1/3">
+        {loading ?
+          <PacmanLoader color="#FF0000" loading={loading} size={90} />
+          :
+          "loading"
+        }
+      </h1>
+    );
   }
 
   // back to MainSection when on click text MovieList in Footer from homepage
